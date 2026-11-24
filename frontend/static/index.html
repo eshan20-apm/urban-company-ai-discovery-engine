@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Company — Customer Behavior Discovery</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        canvas: '#FFFFFF',
+                        canvasSubtle: '#F8FAFC',
+                        borderSubtle: '#E2E8F0',
+                        borderStrong: '#CBD5E1',
+                        slateTextPrimary: '#0F172A',
+                        slateTextSecondary: '#475569',
+                        slateTextMuted: '#94A3B8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #0F172A;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #CBD5E1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-slateTextPrimary flex flex-col antialiased">
+
+    <!-- Minimal Header -->
+    <header class="border-b border-borderSubtle px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-2.5">
+            <div class="w-7 h-7 rounded-lg bg-slateTextPrimary text-white flex items-center justify-center font-bold text-xs tracking-wider">
+                UC
+            </div>
+            <span class="font-semibold text-sm tracking-tight text-slateTextPrimary">Urban Company</span>
+            <span class="text-xs text-slateTextMuted font-normal">• AI Discovery Engine — Customer Behavior Discovery</span>
+        </div>
+        <div class="flex items-center space-x-2 text-xs text-slateTextSecondary">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-slate-600 font-medium">Live Search Active</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-12 flex flex-col justify-start">
+
+        <!-- Search Bar Section -->
+        <div id="search-section" class="w-full transition-all duration-300 space-y-4">
+            <div id="hero-title" class="text-center space-y-2 mb-8">
+                <h1 class="text-2xl font-bold tracking-tight text-slateTextPrimary">What would you like to know about customer behavior?</h1>
+                <p class="text-xs text-slateTextSecondary max-w-lg mx-auto">
+                    Type any query. For every search, the engine executes an <strong>individual live search across the internet</strong> (Reddit, Play Store, public forums) with original sources tagged.
+                </p>
+            </div>
+
+            <!-- Single Clean Search Bar -->
+            <form onsubmit="handleSearch(event)" class="relative flex items-center shadow-[0_2px_12px_rgba(0,0,0,0.03)] rounded-2xl border border-borderStrong bg-white focus-within:border-slateTextPrimary focus-within:ring-2 focus-within:ring-slate-900/5 transition-all p-2">
+                <div class="pl-3.5 pr-2 text-slateTextMuted">
+                    <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+                </div>
+                <input
+                    id="search-input"
+                    type="text"
+                    placeholder="Ask about user behavior, expectations, decision triggers, or complaints..."
+                    class="flex-1 py-2 text-sm text-slateTextPrimary placeholder-slate-400 bg-transparent focus:outline-none"
+                    autocomplete="off"
+                />
+                <button
+                    type="submit"
+                    id="search-btn"
+                    class="flex items-center space-x-1.5 px-4 py-2 bg-slateTextPrimary hover:bg-slate-800 text-white rounded-xl text-xs font-semibold tracking-wide transition shadow-sm ml-2"
+                >
+                    <span>Analyze</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Clean Results Container (Hidden until search) -->
+        <div id="results-container" class="hidden mt-10 space-y-8">
+
+            <!-- Result Header & Tagged Sources Summary -->
+            <div class="border-b border-borderSubtle pb-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <span id="result-badge" class="text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
+                        Behavioral Analysis
+                    </span>
+                    <h2 id="result-title" class="text-lg font-bold text-slateTextPrimary mt-1.5">
+                        Query Results
+                    </h2>
+                </div>
+                <div class="flex items-center flex-wrap gap-2">
+                    <div id="result-source-meta" class="text-xs text-emerald-800 bg-emerald-50 px-2.5 py-1.5 rounded-lg border border-emerald-200 flex items-center space-x-1.5">
+                        <i data-lucide="globe" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span id="result-meta-text">Live internet search complete</span>
+                    </div>
+                    <!-- Download Data Button for Excel, Sheets, Numbers -->
+                    <button id="download-results-btn" onclick="downloadCurrentResultsCSV()" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-borderStrong bg-white hover:bg-slate-50 text-slateTextPrimary text-xs font-semibold transition shadow-sm hover:border-slate-400 group" title="Download data in CSV format compatible with Google Sheets, MS Excel, and Mac Numbers">
+                        <i data-lucide="download" class="w-3.5 h-3.5 text-slate-600 group-hover:text-slate-900 transition"></i>
+                        <span>Download Results (CSV)</span>
+                        <span class="hidden lg:inline text-[10px] text-slate-400 font-normal border-l border-borderSubtle pl-1.5">Sheets • Excel • Numbers</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Evidence Filter Toolbar: Golden Truth vs AI Tagged -->
+            <div id="filter-toolbar" class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl border border-borderSubtle bg-canvasSubtle text-xs">
+                <div class="flex items-center flex-wrap gap-2">
+                    <span class="text-xs text-slateTextMuted font-medium mr-1 flex items-center space-x-1">
+                        <i data-lucide="filter" class="w-3.5 h-3.5 text-slate-400"></i>
+                        <span>Filter:</span>
+                    </span>
+                    <button onclick="setFilter('all')" id="filter-btn-all" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slateTextPrimary text-white shadow-sm flex items-center space-x-1.5">
+                        <span>All Results</span>
+                        <span id="count-all" class="text-[10px] px-1.5 py-0.5 rounded-full bg-white/20 text-white font-mono">0</span>
+                    </button>
+                    <button onclick="setFilter('golden_truth')" id="filter-btn-golden" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition border border-borderSubtle bg-white hover:bg-slate-50 text-slateTextSecondary flex items-center space-x-1.5 hover:border-emerald-300">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                        <span>Golden Truth</span>
+                        <span id="count-golden" class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono font-bold">0</span>
+                    </button>
+                    <button onclick="setFilter('ai_tagged')" id="filter-btn-ai" class="px-3 py-1.5 rounded-xl text-xs font-semibold transition border border-borderSubtle bg-white hover:bg-slate-50 text-slateTextSecondary flex items-center space-x-1.5 hover:border-indigo-300">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600"></i>
+                        <span>AI Tagged</span>
+                        <span id="count-ai" class="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 font-mono font-bold">0</span>
+                    </button>
+                </div>
+                <div class="text-[11px] text-slateTextSecondary font-medium flex items-center space-x-1.5">
+                    <span>Active Filter:</span>
+                    <span id="active-filter-label" class="font-bold text-slateTextPrimary uppercase tracking-wide text-[10px] px-2 py-0.5 rounded bg-white border border-borderSubtle">All Results</span>
+                </div>
+            </div>
+
+            <!-- Executive Behavioral Synthesis -->
+            <div id="synthesis-box" class="p-5 rounded-2xl bg-canvasSubtle border border-borderSubtle space-y-1.5">
+                <span class="text-[10px] font-bold text-slateTextMuted uppercase tracking-wider block">Customer Behavior Synthesis</span>
+                <p id="synthesis-text" class="text-sm text-slateTextPrimary leading-relaxed">
+                    Loading analysis...
+                </p>
+            </div>
+
+            <!-- Key Behavioral Patterns & Expectations -->
+            <div id="patterns-section" class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slateTextPrimary flex items-center space-x-1.5">
+                        <i data-lucide="compass" class="w-3.5 h-3.5 text-slateTextMuted"></i>
+                        <span>Observed Customer Behaviors & Expectations</span>
+                    </h3>
+                    <span class="text-[11px] text-slateTextMuted">Click any card to read full content</span>
+                </div>
+                <div id="patterns-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Original Sources & Verbatim Citations -->
+            <div id="citations-section" class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slateTextPrimary flex items-center space-x-1.5">
+                        <i data-lucide="link" class="w-3.5 h-3.5 text-slateTextMuted"></i>
+                        <span>Original Tagged Sources & Verbatim Customer Evidence</span>
+                    </h3>
+                    <span class="text-[11px] text-slateTextMuted">Click card to maximize full review</span>
+                </div>
+                <div id="citations-grid" class="space-y-2.5">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Honest Data Gap Box (Shown if insufficient data) -->
+            <div id="data-gap-box" class="hidden p-6 rounded-2xl border border-slate-200 bg-canvasSubtle text-xs space-y-3 text-center">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-500">
+                    <i data-lucide="info" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-sm font-semibold text-slateTextPrimary">No Direct Public Feedback Found</h3>
+                <p id="data-gap-text" class="text-slateTextSecondary max-w-lg mx-auto leading-relaxed">
+                    We executed a live internet search across Reddit and Google Play Store for your search terms, but found fewer than 2 relevant public reviews addressing this specific behavior. Rather than generating hypothetical estimates, the engine flags this as unverified in open public channels.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Dialog for Maximizing Cards -->
+    <div id="card-modal" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity">
+        <div class="bg-white rounded-2xl border border-borderSubtle max-w-2xl w-full p-6 shadow-2xl space-y-4 max-h-[85vh] flex flex-col transform transition-transform animate-in fade-in zoom-in-95">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-borderSubtle">
+                <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                    <span id="modal-data-tag" class="text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center space-x-1">
+                        <span>GOLDEN TRUTH</span>
+                    </span>
+                    <span id="modal-source-tag" class="text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
+                        SOURCE
+                    </span>
+                    <span id="modal-city-tag" class="text-xs text-slate-600 font-medium">All India</span>
+                    <span id="modal-author-tag" class="text-xs text-slateTextMuted">• User</span>
+                </div>
+                <button onclick="closeModal()" class="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="flex-1 overflow-y-auto space-y-4 pr-1">
+                <div>
+                    <h3 id="modal-title" class="text-base font-bold text-slateTextPrimary">
+                        Card Title
+                    </h3>
+                    <p id="modal-subtitle" class="text-xs text-slateTextMuted mt-0.5">
+                        Behavioral Context
+                    </p>
+                </div>
+
+                <!-- Full Content Text -->
+                <div class="p-4 rounded-xl bg-canvasSubtle border border-borderSubtle space-y-2">
+                    <span class="text-[10px] font-bold text-slateTextMuted uppercase tracking-wider block">Full Unabridged Content:</span>
+                    <p id="modal-full-text" class="text-sm text-slateTextPrimary leading-relaxed whitespace-pre-wrap">
+                        Content text...
+                    </p>
+                </div>
+
+                <!-- Extra Details / Raw Text if available -->
+                <div id="modal-raw-section" class="hidden p-3 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slateTextSecondary space-y-1">
+                    <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Raw Pre-Normalized Feedback:</span>
+                    <p id="modal-raw-text" class="italic text-[11px] text-slate-600">Raw text</p>
+                </div>
+
+                <!-- Metadata Chips -->
+                <div id="modal-meta-chips" class="flex flex-wrap gap-1.5 pt-2 text-[11px]">
+                    <!-- Metadata chips -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-3 border-t border-borderSubtle flex items-center justify-between">
+                <a id="modal-external-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slateTextPrimary hover:bg-slate-800 text-white text-xs font-medium transition shadow-sm">
+                    <span>Visit Original Source</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <button onclick="closeModal()" class="px-3 py-1.5 rounded-lg border border-borderSubtle hover:bg-slate-100 text-slateTextSecondary text-xs font-medium transition">
+                    Close (Esc)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clean Minimal Footer -->
+    <footer class="mt-auto border-t border-borderSubtle py-4 px-6 text-center text-[11px] text-slateTextMuted">
+        Urban Company Customer Behavior Discovery • Permitted Public Ingestion Only
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        const API_BASE = '/api/v1';
+        let currentQuery = '';
+        let currentFindings = [];
+        let currentCitations = [];
+        let activeFilter = 'all'; // 'all' | 'golden_truth' | 'ai_tagged'
+
+        window.onload = () => {
+            lucide.createIcons();
+            const input = document.getElementById('search-input');
+            input.focus();
+
+            // Modal Escape key handler
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Backdrop click handler
+            document.getElementById('card-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'card-modal') closeModal();
+            });
+        };
+
+        function handleSearch(e) {
+            e.preventDefault();
+            const input = document.getElementById('search-input');
+            const q = input.value.trim();
+            if (q) {
+                runQuery(q);
+            }
+        }
+
+        async function runQuery(query) {
+            currentQuery = query;
+            const btn = document.getElementById('search-btn');
+            const resultsContainer = document.getElementById('results-container');
+            const heroTitle = document.getElementById('hero-title');
+
+            btn.innerHTML = '<span class="flex items-center space-x-1.5"><svg class="animate-spin h-3.5 w-3.5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg><span>Live Searching Internet...</span></span>';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${API_BASE}/discovery/search?q=${encodeURIComponent(query)}`);
+                const data = await res.json();
+
+                currentFindings = data.key_findings || [];
+                currentCitations = data.citations || [];
+                activeFilter = 'all';
+
+                // Show results container and minimize hero
+                resultsContainer.classList.remove('hidden');
+                heroTitle.classList.add('hidden');
+
+                document.getElementById('result-title').textContent = data.title || `Insights: "${query}"`;
+                document.getElementById('result-meta-text').textContent = data.live_ingestion_summary || "Live internet scan completed";
+
+                if (data.status === "insufficient_data") {
+                    document.getElementById('result-badge').textContent = "DATA GAP";
+                    document.getElementById('result-badge').className = "text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200";
+
+                    document.getElementById('filter-toolbar').classList.add('hidden');
+                    document.getElementById('synthesis-box').classList.add('hidden');
+                    document.getElementById('patterns-section').classList.add('hidden');
+                    document.getElementById('citations-section').classList.add('hidden');
+
+                    const gapBox = document.getElementById('data-gap-box');
+                    gapBox.classList.remove('hidden');
+                    document.getElementById('data-gap-text').textContent = data.executive_takeaway;
+                } else {
+                    document.getElementById('result-badge').textContent = "BEHAVIORAL SYNTHESIS";
+                    document.getElementById('result-badge').className = "text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200";
+
+                    document.getElementById('filter-toolbar').classList.remove('hidden');
+                    document.getElementById('synthesis-box').classList.remove('hidden');
+                    document.getElementById('data-gap-box').classList.add('hidden');
+
+                    // Executive Synthesis Text
+                    document.getElementById('synthesis-text').textContent = data.executive_takeaway;
+
+                    // Update Filter Counts & Buttons
+                    updateFilterCounts();
+                    updateFilterButtonsUI();
+
+                    // Render Cards with Filter
+                    renderFilteredResults();
+                }
+
+                lucide.createIcons();
+            } catch (err) {
+                console.error("Error executing query:", err);
+            } finally {
+                btn.innerHTML = '<span>Analyze</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>';
+                btn.disabled = false;
+                lucide.createIcons();
+            }
+        }
+
+        // Filter Handlers
+        function setFilter(type) {
+            activeFilter = type;
+            updateFilterButtonsUI();
+            renderFilteredResults();
+        }
+
+        function updateFilterCounts() {
+            const goldenCount = currentFindings.filter(f => f.tag_type === 'golden_truth').length +
+                                currentCitations.filter(c => c.tag_type === 'golden_truth').length;
+            const aiCount = currentFindings.filter(f => f.tag_type === 'ai_tagged').length +
+                            currentCitations.filter(c => c.tag_type === 'ai_tagged').length;
+            const totalCount = currentFindings.length + currentCitations.length;
+
+            document.getElementById('count-all').textContent = totalCount;
+            document.getElementById('count-golden').textContent = goldenCount;
+            document.getElementById('count-ai').textContent = aiCount;
+        }
+
+        function updateFilterButtonsUI() {
+            const btnAll = document.getElementById('filter-btn-all');
+            const btnGolden = document.getElementById('filter-btn-golden');
+            const btnAi = document.getElementById('filter-btn-ai');
+            const label = document.getElementById('active-filter-label');
+
+            const activeClass = "px-3 py-1.5 rounded-xl text-xs font-semibold transition bg-slateTextPrimary text-white shadow-sm flex items-center space-x-1.5";
+            const inactiveClass = "px-3 py-1.5 rounded-xl text-xs font-semibold transition border border-borderSubtle bg-white hover:bg-slate-50 text-slateTextSecondary flex items-center space-x-1.5";
+
+            btnAll.className = (activeFilter === 'all') ? activeClass : inactiveClass;
+            btnGolden.className = (activeFilter === 'golden_truth') ? activeClass : inactiveClass;
+            btnAi.className = (activeFilter === 'ai_tagged') ? activeClass : inactiveClass;
+
+            if (activeFilter === 'all') label.textContent = 'All Results';
+            else if (activeFilter === 'golden_truth') label.textContent = 'Golden Truth Only';
+            else if (activeFilter === 'ai_tagged') label.textContent = 'AI Tagged Only';
+        }
+
+        function renderFilteredResults() {
+            const patternsSection = document.getElementById('patterns-section');
+            const citationsSection = document.getElementById('citations-section');
+            const patternsGrid = document.getElementById('patterns-grid');
+            const citationsGrid = document.getElementById('citations-grid');
+
+            const filteredFindings = currentFindings.filter(f => {
+                if (activeFilter === 'all') return true;
+                return f.tag_type === activeFilter;
+            });
+
+            const filteredCitations = currentCitations.filter(c => {
+                if (activeFilter === 'all') return true;
+                return c.tag_type === activeFilter;
+            });
+
+            // Patterns Grid Rendering
+            if (filteredFindings.length > 0) {
+                patternsSection.classList.remove('hidden');
+                patternsGrid.innerHTML = filteredFindings.map((f) => {
+                    const originalIdx = currentFindings.indexOf(f);
+                    const isGolden = f.tag_type === 'golden_truth';
+                    const tagBadge = isGolden 
+                        ? `<span class="font-bold px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] uppercase tracking-wider flex items-center space-x-1"><i data-lucide="shield-check" class="w-3 h-3 text-emerald-600"></i><span>Golden Truth</span></span>`
+                        : `<span class="font-bold px-2 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-indigo-800 text-[10px] uppercase tracking-wider flex items-center space-x-1"><i data-lucide="sparkles" class="w-3 h-3 text-indigo-600"></i><span>AI Tagged</span></span>`;
+
+                    return `
+                        <div onclick="maximizeFinding(${originalIdx})" class="p-4 rounded-xl border border-borderSubtle bg-white hover:border-slate-400 hover:shadow-md transition-all cursor-pointer group text-xs space-y-2 relative">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                                    ${tagBadge}
+                                    <span class="font-bold px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-700 text-[10px] uppercase tracking-wider">
+                                        ${f.source_tag || 'PUBLIC SOURCE'}
+                                    </span>
+                                </div>
+                                <span class="text-[10px] text-slate-400 group-hover:text-slate-900 flex items-center space-x-1 font-medium transition">
+                                    <span>Maximize</span>
+                                    <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+                            <strong class="text-slateTextPrimary block font-semibold text-xs leading-snug">${f.title}</strong>
+                            <p class="text-slateTextSecondary leading-relaxed text-[11px] line-clamp-3">${f.detail}</p>
+                            <div class="pt-1.5 border-t border-borderSubtle/60 flex items-center justify-between text-[10px] text-slateTextMuted">
+                                <span>${f.city || 'All India'}</span>
+                                <span class="text-slateTextPrimary font-medium group-hover:underline">Read full insight →</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                patternsSection.classList.add('hidden');
+            }
+
+            // Citations Grid Rendering
+            if (filteredCitations.length > 0) {
+                citationsSection.classList.remove('hidden');
+                citationsGrid.innerHTML = filteredCitations.map((c) => {
+                    const originalIdx = currentCitations.indexOf(c);
+                    const isGolden = c.tag_type === 'golden_truth';
+                    const tagBadge = isGolden 
+                        ? `<span class="font-bold px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] uppercase tracking-wider flex items-center space-x-1"><i data-lucide="shield-check" class="w-3 h-3 text-emerald-600"></i><span>Golden Truth</span></span>`
+                        : `<span class="font-bold px-2 py-0.5 rounded bg-indigo-50 border border-indigo-200 text-indigo-800 text-[10px] uppercase tracking-wider flex items-center space-x-1"><i data-lucide="sparkles" class="w-3 h-3 text-indigo-600"></i><span>AI Tagged</span></span>`;
+
+                    return `
+                        <div onclick="maximizeCitation(${originalIdx})" class="p-4 rounded-xl border border-borderSubtle bg-canvasSubtle hover:border-slate-400 hover:shadow-md transition-all cursor-pointer group text-xs space-y-2 relative">
+                            <div class="flex items-center justify-between text-[11px]">
+                                <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                                    ${tagBadge}
+                                    <span class="font-bold px-2 py-0.5 rounded bg-white border border-borderSubtle text-slate-800 text-[10px] tracking-wide uppercase">
+                                        ${c.source}
+                                    </span>
+                                    <span class="text-slateTextMuted">•</span>
+                                    <span class="text-slate-600 font-medium">${c.city || 'All India'}</span>
+                                    <span class="text-slateTextMuted">•</span>
+                                    <span class="text-slate-500">${c.author || 'User'}</span>
+                                </div>
+                                <span class="text-[10px] text-slate-400 group-hover:text-slate-900 flex items-center space-x-1 font-medium transition">
+                                    <span>Read full review</span>
+                                    <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+                            <p class="text-slateTextSecondary italic text-[11px] bg-white p-3 rounded-lg border border-borderSubtle/60 leading-relaxed">
+                                "${c.quote}"
+                            </p>
+                            <div class="flex items-center justify-between text-[10px] text-slateTextMuted pt-1">
+                                <span>${c.date || 'Recent feedback'}</span>
+                                <span class="text-slateTextPrimary font-medium group-hover:underline flex items-center space-x-1">
+                                    <span>Maximize card</span>
+                                    <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                citationsSection.classList.add('hidden');
+            }
+
+            lucide.createIcons();
+        }
+
+        // Maximizing Modal Functions
+        function maximizeFinding(idx) {
+            const f = currentFindings[idx];
+            if (!f) return;
+
+            const isGolden = f.tag_type === 'golden_truth';
+            const modalTag = document.getElementById('modal-data-tag');
+            modalTag.textContent = f.tag_label || (isGolden ? 'GOLDEN TRUTH' : 'AI TAGGED');
+            modalTag.className = isGolden 
+                ? 'text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center space-x-1'
+                : 'text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-indigo-50 text-indigo-800 border border-indigo-200 flex items-center space-x-1';
+
+            document.getElementById('modal-source-tag').textContent = f.source_tag || 'PUBLIC SOURCE';
+            document.getElementById('modal-city-tag').textContent = f.city || 'All India';
+            document.getElementById('modal-author-tag').textContent = f.author ? `• ${f.author}` : '';
+            document.getElementById('modal-title').textContent = f.title;
+            document.getElementById('modal-subtitle').textContent = f.full_explanation || 'Observed customer behavioral pattern';
+
+            document.getElementById('modal-full-text').textContent = f.evidence_quote || f.detail;
+
+            const rawSection = document.getElementById('modal-raw-section');
+            if (f.raw_text && f.raw_text !== f.evidence_quote) {
+                rawSection.classList.remove('hidden');
+                document.getElementById('modal-raw-text').textContent = f.raw_text;
+            } else {
+                rawSection.classList.add('hidden');
+            }
+
+            document.getElementById('modal-meta-chips').innerHTML = `
+                <span class="px-2 py-0.5 rounded ${isGolden ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-indigo-50 text-indigo-700 border border-indigo-200'} font-medium">${f.tag_label || (isGolden ? 'Golden Truth' : 'AI Tagged')}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${f.source_tag || 'Public Forum'}</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${f.city || 'Metro'}</span>
+            `;
+
+            document.getElementById('modal-external-link').href = f.url || 'https://urbancompany.com';
+
+            openModal();
+        }
+
+        function maximizeCitation(idx) {
+            const c = currentCitations[idx];
+            if (!c) return;
+
+            const isGolden = c.tag_type === 'golden_truth';
+            const modalTag = document.getElementById('modal-data-tag');
+            modalTag.textContent = c.tag_label || (isGolden ? 'GOLDEN TRUTH' : 'AI TAGGED');
+            modalTag.className = isGolden 
+                ? 'text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center space-x-1'
+                : 'text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-indigo-50 text-indigo-800 border border-indigo-200 flex items-center space-x-1';
+
+            document.getElementById('modal-source-tag').textContent = c.source.toUpperCase();
+            document.getElementById('modal-city-tag').textContent = c.city || 'All India';
+            document.getElementById('modal-author-tag').textContent = `• ${c.author || 'User'}`;
+            document.getElementById('modal-title').textContent = `${c.source} Customer Review`;
+            document.getElementById('modal-subtitle').textContent = `Rating: ${c.rating ? '★ ' + c.rating : 'Unrated'} • Category: ${c.vertical || 'General'}`;
+
+            document.getElementById('modal-full-text').textContent = c.full_text || c.quote;
+
+            const rawSection = document.getElementById('modal-raw-section');
+            if (c.text_raw && c.text_raw !== c.full_text) {
+                rawSection.classList.remove('hidden');
+                document.getElementById('modal-raw-text').textContent = c.text_raw;
+            } else {
+                rawSection.classList.add('hidden');
+            }
+
+            const aspectsHtml = (c.aspects || []).map(a => `<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${a}</span>`).join('');
+            document.getElementById('modal-meta-chips').innerHTML = `
+                <span class="px-2 py-0.5 rounded ${isGolden ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-indigo-50 text-indigo-700 border border-indigo-200'} font-medium">${c.tag_label || (isGolden ? 'Golden Truth' : 'AI Tagged')}</span>
+                ${aspectsHtml}
+                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">${c.vertical || 'Service'}</span>
+                ${c.is_hinglish ? '<span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200 font-medium">Hinglish Normalized</span>' : ''}
+                ${c.churn_flag ? '<span class="px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-medium">Churn Threat</span>' : ''}
+            `;
+
+            document.getElementById('modal-external-link').href = c.url || 'https://urbancompany.com';
+
+            openModal();
+        }
+
+        function openModal() {
+            const modal = document.getElementById('card-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('card-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // CSV Export for Google Sheets, Microsoft Excel, and Apple Mac Numbers
+        function downloadCurrentResultsCSV() {
+            if (!currentFindings.length && !currentCitations.length) {
+                if (currentQuery) {
+                    window.location.href = `${API_BASE}/export/csv?q=${encodeURIComponent(currentQuery)}`;
+                } else {
+                    alert("Please run a search query first to download behavioral findings.");
+                }
+                return;
+            }
+
+            const query = currentQuery || "Discovery";
+            const rows = [];
+            
+            // Header Row
+            rows.push([
+                "Search Query",
+                "Item Type",
+                "Data Tag (Golden Truth / AI Tagged)",
+                "Behavior Pattern / Aspect",
+                "Observed Detail / Quote",
+                "Source Platform",
+                "City / Location",
+                "Author Handle",
+                "Star Rating",
+                "Original Source URL"
+            ]);
+
+            // Filter items based on active view for export
+            const targetFindings = currentFindings.filter(f => activeFilter === 'all' || f.tag_type === activeFilter);
+            const targetCitations = currentCitations.filter(c => activeFilter === 'all' || c.tag_type === activeFilter);
+
+            // Observed Patterns / Findings
+            targetFindings.forEach(f => {
+                rows.push([
+                    query,
+                    "Behavioral Pattern",
+                    f.tag_label || "AI Tagged",
+                    f.title || "",
+                    f.evidence_quote || f.detail || "",
+                    f.source_tag || "Public Source",
+                    f.city || "All India",
+                    f.author || "User",
+                    "N/A",
+                    f.url || "https://urbancompany.com"
+                ]);
+            });
+
+            // Citations & Verbatim Reviews
+            targetCitations.forEach(c => {
+                rows.push([
+                    query,
+                    "Verbatim Customer Review",
+                    c.tag_label || (c.tag_type === 'golden_truth' ? "Golden Truth" : "AI Tagged"),
+                    (c.aspects || []).join(", "),
+                    c.full_text || c.quote || "",
+                    c.source || "Public Review",
+                    c.city || "All India",
+                    c.author || "User",
+                    c.rating != null ? String(c.rating) : "Unrated",
+                    c.url || "https://urbancompany.com"
+                ]);
+            });
+
+            // RFC 4180 CSV standard escaping
+            const csvBody = rows.map(row => 
+                row.map(val => {
+                    const str = String(val == null ? "" : val);
+                    if (str.includes(",") || str.includes('"') || str.includes("\n") || str.includes("\r")) {
+                        return '"' + str.replace(/"/g, '""') + '"';
+                    }
+                    return str;
+                }).join(",")
+            ).join("\r\n");
+
+            // Prepend \ufeff (UTF-8 BOM) for flawless cross-platform opening:
+            // - Microsoft Excel (Windows & macOS): Prevents garbled symbols (₹) and character corruption
+            // - Google Sheets: Automatically detects UTF-8 columns
+            // - Apple Mac Numbers: Seamlessly aligns columns without encoding dialogue
+            const blob = new Blob(["\ufeff" + csvBody], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            const filterSuffix = activeFilter === 'all' ? '' : `_${activeFilter}`;
+            const safeQ = query.slice(0, 25).replace(/[^a-zA-Z0-9_-]/g, "_");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `UrbanCompany_Behavior_${safeQ}${filterSuffix}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

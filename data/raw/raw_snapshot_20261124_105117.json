@@ -1,0 +1,2462 @@
+[
+  {
+    "id": "c4b7f46c18f6d158",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c4b7f4",
+    "rating": 5.0,
+    "text_raw": "excellent service, great professionalism",
+    "text_normalized": "excellent service, great professionalism",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 16:16:27"
+  },
+  {
+    "id": "978e55465e67c62b",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_978e55",
+    "rating": 1.0,
+    "text_raw": "i suffering from 2-3 time my booking cancle but my paid money not refund untill, please refund my money",
+    "text_normalized": "i suffering from 2-3 time my booking cancle but my paid money not refund untill, please refund my money",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 16:14:40"
+  },
+  {
+    "id": "cab83fa4e958cb3d",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_cab83f",
+    "rating": 5.0,
+    "text_raw": "excellent work",
+    "text_normalized": "excellent work",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 16:10:30"
+  },
+  {
+    "id": "56b609263cade9f7",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_56b609",
+    "rating": 1.0,
+    "text_raw": "The insta help launched by urban company is a total waste of money and time the people who are hired to work in it are really unprofessional and are rude they don't even work properly and for the complete time duration the company takes money before the session of the helping hand is incomplete and they just come and think that without working they will get their money.To do so they first create a scene and leave the premises before the session is completed.",
+    "text_normalized": "The insta help launched by urban company is a total waste of money and time the people who are hired to work in it are really unprofessional and are rude they don't even work properly and for the complete time duration the company takes money before the session of the helping hand is incomplete and they just come and think that without working they will get their money.To do so they first create a scene and leave the premises before the session is completed.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Service Quality",
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 15:57:32"
+  },
+  {
+    "id": "4e98f9f8adf042b0",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_4e98f9",
+    "rating": 1.0,
+    "text_raw": "very worst service in bathroom cleaning, it had charged me 790 rs, but bacis clening also not done, simply waste of money and time",
+    "text_normalized": "very worst service in bathroom cleaning, it had charged me 790 rs, but bacis clening also not done, simply waste of money and time",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 15:37:28"
+  },
+  {
+    "id": "4530d69fa1a8c985",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_4530d6",
+    "rating": 5.0,
+    "text_raw": "good service",
+    "text_normalized": "good service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 15:36:24"
+  },
+  {
+    "id": "c36dac5e83441857",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c36dac",
+    "rating": 5.0,
+    "text_raw": "I have an idea that could potentially improve your services by up to 800 times and bring tremendous benefits to your platform.",
+    "text_normalized": "I have an idea that could potentially improve your services by up to 800 times and bring tremendous benefits to your platform.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 15:18:19"
+  },
+  {
+    "id": "2ca32cc829d7c676",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_2ca32c",
+    "rating": 1.0,
+    "text_raw": "Just scam on the name of instant service",
+    "text_normalized": "Just scam on the name of instant service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 14:50:56"
+  },
+  {
+    "id": "c4e0e3f1d0811211",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c4e0e3",
+    "rating": 3.0,
+    "text_raw": "most of the time slots are unavailable when we actually need",
+    "text_normalized": "most of the time slots are unavailable when we actually need",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Punctuality & Reliability"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 14:43:25"
+  },
+  {
+    "id": "97945235ddb1baf0",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_979452",
+    "rating": 4.0,
+    "text_raw": "very nice experience",
+    "text_normalized": "very nice experience",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 14:03:01"
+  },
+  {
+    "id": "fb2a6bb10261026f",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_fb2a6b",
+    "rating": 5.0,
+    "text_raw": "Excellent service.",
+    "text_normalized": "Excellent service.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 13:36:42"
+  },
+  {
+    "id": "df234c4b71b1d674",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_df234c",
+    "rating": 5.0,
+    "text_raw": "good",
+    "text_normalized": "good",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:55:01"
+  },
+  {
+    "id": "bcd2c408e1906b59",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_bcd2c4",
+    "rating": 5.0,
+    "text_raw": "All services in a very user friendly app.",
+    "text_normalized": "All services in a very user friendly app.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:49:39"
+  },
+  {
+    "id": "7bdca5ad65c6cf3b",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_7bdca5",
+    "rating": 5.0,
+    "text_raw": "ok.",
+    "text_normalized": "ok.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:33:43"
+  },
+  {
+    "id": "68360d642aca4e71",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_68360d",
+    "rating": 5.0,
+    "text_raw": "qsww de room www www qa seee sweet re es ee a www aass sa a wwwawwww ee aa\u00e0",
+    "text_normalized": "qsww de room www www qa seee sweet re es ee a www aass sa a wwwawwww ee aa\u00e0",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:27:06"
+  },
+  {
+    "id": "8534ccafc9ab9e71",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_8534cc",
+    "rating": 5.0,
+    "text_raw": "very nice experience",
+    "text_normalized": "very nice experience",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:22:21"
+  },
+  {
+    "id": "15cd4c1f249407f3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_15cd4c",
+    "rating": 1.0,
+    "text_raw": "always delayed delivery and worst customer care",
+    "text_normalized": "always delayed delivery and worst customer care",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 12:17:34"
+  },
+  {
+    "id": "de55d2bae0471a6b",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_de55d2",
+    "rating": 1.0,
+    "text_raw": "Your Instahelp is another eye wash as those girls do t listen to us n abruptly leave n we are charged for that. what policy you have. if we cancel 2 days before you'll charge us. if your professional leave abruptly you'll charge us. for your growing you need our money n you keep repeating that it's your policy. your policy is to earn money without providing quality services n you are living at our cost n our hard earned money",
+    "text_normalized": "Your Instahelp is another eye wash as those girls do t listen to us n abruptly leave n we are charged for that. what policy you have. if we cancel 2 days before you'll charge us. if your professional leave abruptly you'll charge us. for your growing you need our money n you keep repeating that it's your policy. your policy is to earn money without providing quality services n you are living at our cost n our hard earned money",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency",
+      "Punctuality & Reliability",
+      "Service Quality",
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 1,
+    "ingested_at": "2026-11-23 12:04:04"
+  },
+  {
+    "id": "d56c2e6649c3446d",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_d56c2e",
+    "rating": 1.0,
+    "text_raw": "It takes a lot of time to load a screen. Services are also fine only If you keep using it they will make it more expensive for you. They are using their price hiking algorithm aggressively and keep blaming on unavailability of insta help or high demand. they just use statistics from your phone to increase the prices.",
+    "text_normalized": "It takes a lot of time to load a screen. Services are also fine only If you keep using it they will make it more expensive for you. They are using their price hiking algorithm aggressively and keep blaming on unavailability of insta help or high demand. they just use statistics from your phone to increase the prices.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:56:03"
+  },
+  {
+    "id": "155fd06634f97414",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_155fd0",
+    "rating": 1.0,
+    "text_raw": "50 percent of the Mumbai population stays in chawl system homes. However it is experienced that many helps assigned refuse to work in chawl saying we are restricted to work in chawl homes leaving your customers helpless at the last minute. please clarify whether you have such Social discrimination creating policy. If so why booking are accepted initially ?",
+    "text_normalized": "50 percent of the Mumbai population stays in chawl system homes. However it is experienced that many helps assigned refuse to work in chawl saying we are restricted to work in chawl homes leaving your customers helpless at the last minute. please clarify whether you have such Social discrimination creating policy. If so why booking are accepted initially ?",
+    "city": "Mumbai",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:49:43"
+  },
+  {
+    "id": "07f6b2599fa33791",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_07f6b2",
+    "rating": 5.0,
+    "text_raw": "very nice app bahut accha yaha kaam hota hai acche se work karte hai",
+    "text_normalized": "very nice app bahut accha yaha kaam hota hai acche se work karte hai",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": true,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:49:10"
+  },
+  {
+    "id": "368124a1dcf3a026",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_368124",
+    "rating": 1.0,
+    "text_raw": "services has become pathetic now. bookings are rescheduling at random, maids don't turn up and don't answer calls even of urban company support calls. AI support is useless.. over all the once good platform turned into a total hopeless..",
+    "text_normalized": "services has become pathetic now. bookings are rescheduling at random, maids don't turn up and don't answer calls even of urban company support calls. AI support is useless.. over all the once good platform turned into a total hopeless..",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:46:48"
+  },
+  {
+    "id": "5d4052f8912c2e71",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_5d4052",
+    "rating": 5.0,
+    "text_raw": "Excellent service executed by Urban Company! The professional arrived right on time, was very polite, and did a thorough job. Highly recommended.\"",
+    "text_normalized": "Excellent service executed by Urban Company! The professional arrived right on time, was very polite, and did a thorough job. Highly recommended.\"",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:43:01"
+  },
+  {
+    "id": "bb4ea382c90159d0",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_bb4ea3",
+    "rating": 5.0,
+    "text_raw": "goods service",
+    "text_normalized": "goods service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:24:30"
+  },
+  {
+    "id": "f3f9cdba8f2a8bce",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f3f9cd",
+    "rating": 1.0,
+    "text_raw": "you have to spend minimum 200 at any cost you repair your item or not",
+    "text_normalized": "you have to spend minimum 200 at any cost you repair your item or not",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:20:57"
+  },
+  {
+    "id": "f3d60f34afba2aec",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f3d60f",
+    "rating": 5.0,
+    "text_raw": "good service \ud83d\udc4d",
+    "text_normalized": "good service \ud83d\udc4d",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:18:08"
+  },
+  {
+    "id": "ba0b40d858f0b0fb",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ba0b40",
+    "rating": 5.0,
+    "text_raw": "Good service.",
+    "text_normalized": "Good service.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 11:16:22"
+  },
+  {
+    "id": "2c9d3ce8e21b6bc7",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_2c9d3c",
+    "rating": 5.0,
+    "text_raw": "good service",
+    "text_normalized": "good service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 10:34:02"
+  },
+  {
+    "id": "800e465a59d5f31e",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_800e46",
+    "rating": 1.0,
+    "text_raw": "very bad experience. insta help dint arrive even after 1 hr delay. when called she spoke rudely telling she is not well and cut the call. no proper support chat available and unable to cancel also. now asking to reschedule which I don't want to.",
+    "text_normalized": "very bad experience. insta help dint arrive even after 1 hr delay. when called she spoke rudely telling she is not well and cut the call. no proper support chat available and unable to cancel also. now asking to reschedule which I don't want to.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Partner Conduct & Safety",
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 09:56:24"
+  },
+  {
+    "id": "9f50265bad122bd1",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_9f5026",
+    "rating": 1.0,
+    "text_raw": "Very Poor Service Experience with Urban Company I recently booked a service through Urban Company, and the experience was extremely disappointing. The service quality was very poor, and the overall experience was completely unsatisfactory. The professional seemed unprepared, and the work did not meet the expected standards. I am highly disappointed with the service and the lack of professionalism. I would not recommend Urban Company based on this experience.",
+    "text_normalized": "Very Poor Service Experience with Urban Company I recently booked a service through Urban Company, and the experience was extremely disappointing. The service quality was very poor, and the overall experience was completely unsatisfactory. The professional seemed unprepared, and the work did not meet the expected standards. I am highly disappointed with the service and the lack of professionalism. I would not recommend Urban Company based on this experience.",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Service Quality",
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 09:53:16"
+  },
+  {
+    "id": "f774575f80f901f6",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f77457",
+    "rating": 5.0,
+    "text_raw": "They really cleans well",
+    "text_normalized": "They really cleans well",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 09:51:54"
+  },
+  {
+    "id": "fd2ec0a6e3c13aac",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_fd2ec0",
+    "rating": 5.0,
+    "text_raw": "Add a service for just floor cleaning of 2,3 or 4bhk. Some of us just want our floor professionally cleaned with machines and appropriate chemicals.",
+    "text_normalized": "Add a service for just floor cleaning of 2,3 or 4bhk. Some of us just want our floor professionally cleaned with machines and appropriate chemicals.",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 09:38:22"
+  },
+  {
+    "id": "07f31f1cd0623fe8",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_07f31f",
+    "rating": 1.0,
+    "text_raw": "I booked 2 services from a plumber Drainage block worth 199 Soap holder fitting worth 99 I paid the total amount of 430 including all other unfair things. The plumber came and fixed the drainage block within 5 min Now I got a revised estimation estimation to accept 350 for this work and 100 will return as this person is not going to work for soap holder fitting Now if I again book the soap holder it will become another 300 So for this 2 small works I am paying 650/- This is the worst service",
+    "text_normalized": "I booked 2 services from a plumber Drainage block worth 199 Soap holder fitting worth 99 I paid the total amount of 430 including all other unfair things. The plumber came and fixed the drainage block within 5 min Now I got a revised estimation estimation to accept 350 for this work and 100 will return as this person is not going to work for soap holder fitting Now if I again book the soap holder it will become another 300 So for this 2 small works I am paying 650/- This is the worst service",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 09:30:40"
+  },
+  {
+    "id": "cee24f8986162ed3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_cee24f",
+    "rating": 5.0,
+    "text_raw": "nice",
+    "text_normalized": "nice",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 08:50:31"
+  },
+  {
+    "id": "e98f02d9c56218fe",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_e98f02",
+    "rating": 1.0,
+    "text_raw": "no customer support, neither there daily help come on time and also there is no customer support to help out",
+    "text_normalized": "no customer support, neither there daily help come on time and also there is no customer support to help out",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 08:12:45"
+  },
+  {
+    "id": "93258b7c367d253f",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_93258b",
+    "rating": 4.0,
+    "text_raw": "good app",
+    "text_normalized": "good app",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 07:04:34"
+  },
+  {
+    "id": "25317f2a79f9837a",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_25317f",
+    "rating": 1.0,
+    "text_raw": "Booked twice for carpenter who never came",
+    "text_normalized": "Booked twice for carpenter who never came",
+    "city": "All India",
+    "service_vertical": "Plumber & Electrician",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 01:50:23"
+  },
+  {
+    "id": "b0db4fea882af6fd",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_b0db4f",
+    "rating": 1.0,
+    "text_raw": "Worst Experience with Urban Compan Booked Gas Repair and Carpenter service - both were a disaster. 1. Gas Repair: Technician did not come on time. Waited for more than 1 hour, still no one came. Finally they cancelled the service themselves. 2. Carpenter - Shelve Fitting: App showed Rs. 400. After coming home, carpenter demanded Rs. 400 extra for extra shelf very small one Rs. 100 for making a hole for photo. Every small work is chargeable separately. Very rude behaviour by urban company execut",
+    "text_normalized": "Worst Experience with Urban Compan Booked Gas Repair and Carpenter service - both were a disaster. 1. Gas Repair: Technician did not come on time. Waited for more than 1 hour, still no one came. Finally they cancelled the service themselves. 2. Carpenter - Shelve Fitting: App showed Rs. 400. After coming home, carpenter demanded Rs. 400 extra for extra shelf very small one Rs. 100 for making a hole for photo. Every small work is chargeable separately. Very rude behaviour by urban company execut",
+    "city": "All India",
+    "service_vertical": "Plumber & Electrician",
+    "aspects": [
+      "Pricing & Transparency",
+      "Punctuality & Reliability",
+      "Partner Conduct & Safety",
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-23 00:47:06"
+  },
+  {
+    "id": "2f7b82e431526e82",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_2f7b82",
+    "rating": 3.0,
+    "text_raw": "insta help means instantly we require help but every time when I'm checking time slots not available for 2 days then what is the meaning of instant help. please take care of it.",
+    "text_normalized": "insta help means instantly we require help but every time when I'm checking time slots not available for 2 days then what is the meaning of instant help. please take care of it.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 23:18:41"
+  },
+  {
+    "id": "7b8801052fbe0089",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_7b8801",
+    "rating": 5.0,
+    "text_raw": "she worked very well \ud83d\udc4f\ud83d\udc4f\ud83d\udc4f thank you urban company I will book this once again IAM very happy they helped me lots at home she washed vessel very neatly",
+    "text_normalized": "she worked very well \ud83d\udc4f\ud83d\udc4f\ud83d\udc4f thank you urban company I will book this once again IAM very happy they helped me lots at home she washed vessel very neatly",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 22:29:04"
+  },
+  {
+    "id": "a4ac1f2de6d55d77",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_a4ac1f",
+    "rating": 5.0,
+    "text_raw": "Very nice service. Well experienced professional Mr. Sahnwaz. Work completed very nicely by said Mr. Sahnwaz.",
+    "text_normalized": "Very nice service. Well experienced professional Mr. Sahnwaz. Work completed very nicely by said Mr. Sahnwaz.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 21:21:55"
+  },
+  {
+    "id": "05fe16ab8e5841cb",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_05fe16",
+    "rating": 5.0,
+    "text_raw": "very nice",
+    "text_normalized": "very nice",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 20:09:43"
+  },
+  {
+    "id": "13ea21dce315b0ed",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_13ea21",
+    "rating": 5.0,
+    "text_raw": "genuine online services, good montirized service providers",
+    "text_normalized": "genuine online services, good montirized service providers",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 20:07:05"
+  },
+  {
+    "id": "bb8095fbc764c9c8",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_bb8095",
+    "rating": 1.0,
+    "text_raw": "Extremely Disappointing Service \u2013 Worst Experience with Urban Company I am extremely disappointed and dissatisfied with the washing machine service provided by Urban Company. The technician who visited my home did absolutely no proper service or repair work. He simply explained a few things, wasted our valuable time, and suggested getting the actual repair work done from an outside service provider. Then what is the point of booking a service through Urban Company and paying for it? We trusted",
+    "text_normalized": "Extremely Disappointing Service \u2013 Worst Experience with Urban Company I am extremely disappointed and dissatisfied with the washing machine service provided by Urban Company. The technician who visited my home did absolutely no proper service or repair work. He simply explained a few things, wasted our valuable time, and suggested getting the actual repair work done from an outside service provider. Then what is the point of booking a service through Urban Company and paying for it? We trusted",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 19:46:33"
+  },
+  {
+    "id": "ab2e6faa92e39ad1",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ab2e6f",
+    "rating": 4.0,
+    "text_raw": "good",
+    "text_normalized": "good",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 19:25:16"
+  },
+  {
+    "id": "ab858eb606e0246f",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ab858e",
+    "rating": 5.0,
+    "text_raw": "Shivani was very nice and sweet in her work.. no hurrying on anything Will definitely call her again",
+    "text_normalized": "Shivani was very nice and sweet in her work.. no hurrying on anything Will definitely call her again",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 19:21:26"
+  },
+  {
+    "id": "8e26acf19677916e",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_8e26ac",
+    "rating": 1.0,
+    "text_raw": "worst experience and coustomer service is working worst the issues are never resolved",
+    "text_normalized": "worst experience and coustomer service is working worst the issues are never resolved",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 19:19:23"
+  },
+  {
+    "id": "227ae6a62a522381",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_227ae6",
+    "rating": 1.0,
+    "text_raw": "\u203c\ufe0fThird class customer care support. They don't provide any RO technician if any problem occurs. \u203c\ufe0fLow class servicing team. The service man was very rude and lame. He didn't tell me how to use it, any guidelines & any precautions. The booked time was 10 am. But he arrived at 2.30pm. And showed us attitude. And the features of this app are really disgusting. It needs to be improved. \u203c\ufe0fThird class app service. I wanna give -5 star review.",
+    "text_normalized": "\u203c\ufe0fThird class customer care support. They don't provide any RO technician if any problem occurs. \u203c\ufe0fLow class servicing team. The service man was very rude and lame. He didn't tell me how to use it, any guidelines & any precautions. The booked time was 10 am. But he arrived at 2.30pm. And showed us attitude. And the features of this app are really disgusting. It needs to be improved. \u203c\ufe0fThird class app service. I wanna give -5 star review.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety",
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 18:56:52"
+  },
+  {
+    "id": "b5f9edc259dfd5f9",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_b5f9ed",
+    "rating": 5.0,
+    "text_raw": "nice app",
+    "text_normalized": "nice app",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 18:40:14"
+  },
+  {
+    "id": "52019d0fc82d2a56",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_52019d",
+    "rating": 1.0,
+    "text_raw": "I had been a regular customer of urban company but due to one person sujoy mondal I am giving this pap 1 star as he cancelled booking exact half hour before the scheduled time without explaining the reason and customer service seems to be hopeless",
+    "text_normalized": "I had been a regular customer of urban company but due to one person sujoy mondal I am giving this pap 1 star as he cancelled booking exact half hour before the scheduled time without explaining the reason and customer service seems to be hopeless",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Punctuality & Reliability",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:57:50"
+  },
+  {
+    "id": "81af4262609b2d62",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_81af42",
+    "rating": 5.0,
+    "text_raw": "very helpful",
+    "text_normalized": "very helpful",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:56:41"
+  },
+  {
+    "id": "ff81816fbdd28d98",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ff8181",
+    "rating": 5.0,
+    "text_raw": "Thanks a lot for providing us such a excellent service \ud83d\udc4f",
+    "text_normalized": "Thanks a lot for providing us such a excellent service \ud83d\udc4f",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:50:26"
+  },
+  {
+    "id": "4320d7633b29863c",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_4320d7",
+    "rating": 5.0,
+    "text_raw": "After lodging complaint, completed job/ work satisfactory.",
+    "text_normalized": "After lodging complaint, completed job/ work satisfactory.",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:40:03"
+  },
+  {
+    "id": "988eeb99f69034b9",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_988eeb",
+    "rating": 5.0,
+    "text_raw": "good professional work",
+    "text_normalized": "good professional work",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:35:26"
+  },
+  {
+    "id": "b5cc854f0ce61655",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_b5cc85",
+    "rating": 3.0,
+    "text_raw": "Insta maids constantly pester for good ratings. This is what I use this app for most of the time. UC has ruined this with their rating system and now maids are only interested in sharing sob stories and begging for ratings (some even insist I rate them well and show them!) it's becoming ridiculous will not be using this app for maids anymore.",
+    "text_normalized": "Insta maids constantly pester for good ratings. This is what I use this app for most of the time. UC has ruined this with their rating system and now maids are only interested in sharing sob stories and begging for ratings (some even insist I rate them well and show them!) it's becoming ridiculous will not be using this app for maids anymore.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:28:37"
+  },
+  {
+    "id": "ca103529066c9a21",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ca1035",
+    "rating": 5.0,
+    "text_raw": "entrusted job completed with a good behavior",
+    "text_normalized": "entrusted job completed with a good behavior",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:25:04"
+  },
+  {
+    "id": "74e3dc31af869751",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_74e3dc",
+    "rating": 5.0,
+    "text_raw": "solved real life problems. Kudos to IC",
+    "text_normalized": "solved real life problems. Kudos to IC",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:23:29"
+  },
+  {
+    "id": "c759ac5911eaa5f5",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c759ac",
+    "rating": 5.0,
+    "text_raw": "excellent",
+    "text_normalized": "excellent",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 17:05:13"
+  },
+  {
+    "id": "3860bc38ba0e6099",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_3860bc",
+    "rating": 1.0,
+    "text_raw": "Pathetic Warranty Service. Good for low level cleaning jobs. Do NOT go for expensive painting or waterproofing service. Pathetic customer and no support from grievance team.",
+    "text_normalized": "Pathetic Warranty Service. Good for low level cleaning jobs. Do NOT go for expensive painting or waterproofing service. Pathetic customer and no support from grievance team.",
+    "city": "All India",
+    "service_vertical": "Home Cleaning",
+    "aspects": [
+      "Pricing & Transparency",
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:57:04"
+  },
+  {
+    "id": "fd7b3aaec4552c81",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_fd7b3a",
+    "rating": 5.0,
+    "text_raw": "nice work",
+    "text_normalized": "nice work",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:56:50"
+  },
+  {
+    "id": "9212df16b8e98f7f",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_9212df",
+    "rating": 5.0,
+    "text_raw": "ambika has done really good job with a lot of patience and good communication..satisfied with her work..thank you .",
+    "text_normalized": "ambika has done really good job with a lot of patience and good communication..satisfied with her work..thank you .",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:47:09"
+  },
+  {
+    "id": "4780e4003871a160",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_4780e4",
+    "rating": 5.0,
+    "text_raw": "good \ud83d\udc4d",
+    "text_normalized": "good \ud83d\udc4d",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:40:05"
+  },
+  {
+    "id": "4b03161cced62403",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_4b0316",
+    "rating": 5.0,
+    "text_raw": "Excellent service! The lady was very polite, helpful and hardworking. Good behaviour and satisfactory service. Highly appreciated!",
+    "text_normalized": "Excellent service! The lady was very polite, helpful and hardworking. Good behaviour and satisfactory service. Highly appreciated!",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:38:07"
+  },
+  {
+    "id": "c70136fe2ae6440b",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c70136",
+    "rating": 5.0,
+    "text_raw": "good",
+    "text_normalized": "good",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:36:40"
+  },
+  {
+    "id": "c6524dda07df35f4",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c6524d",
+    "rating": 1.0,
+    "text_raw": "SCAM SCAM This app Is now bcum a great scam by the company itself. Here is how it operates. They charge u money for visitation (appliance repairs), come and declare that your appliance is very old and there are no spares in the market and this cannot be repaired. The technician will walk out and ur fees is gone. Issue is not resolved and the helpline is AI driven with an answer - Sorry, this cannot be refunded, please book a fresh service again. U book again, it will happen the same way again.",
+    "text_normalized": "SCAM SCAM This app Is now bcum a great scam by the company itself. Here is how it operates. They charge u money for visitation (appliance repairs), come and declare that your appliance is very old and there are no spares in the market and this cannot be repaired. The technician will walk out and ur fees is gone. Issue is not resolved and the helpline is AI driven with an answer - Sorry, this cannot be refunded, please book a fresh service again. U book again, it will happen the same way again.",
+    "city": "All India",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Pricing & Transparency",
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:35:22"
+  },
+  {
+    "id": "663a2b4ee4f42368",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_663a2b",
+    "rating": 1.0,
+    "text_raw": "The App asks the customer to wait for 90 minutes for an order. Then cancels 10 minutes before the order and provides no alternative for the same day.",
+    "text_normalized": "The App asks the customer to wait for 90 minutes for an order. Then cancels 10 minutes before the order and provides no alternative for the same day.",
+    "city": "All India",
+    "service_vertical": "Native Smart Devices",
+    "aspects": [
+      "Punctuality & Reliability",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 16:20:36"
+  },
+  {
+    "id": "27381f68f1f618e5",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_27381f",
+    "rating": 5.0,
+    "text_raw": "Finally got the work completed today after the hired persons cancelled thrice. A good job was done by the Insta Help maid. Though fed up with the AI answering my queries with no solution",
+    "text_normalized": "Finally got the work completed today after the hired persons cancelled thrice. A good job was done by the Insta Help maid. Though fed up with the AI answering my queries with no solution",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:42:07"
+  },
+  {
+    "id": "f3c37b9e5ed095a6",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f3c37b",
+    "rating": 1.0,
+    "text_raw": "not giving all options and once I booked the service, the persons asked for a double amount. don't use this lucha app.",
+    "text_normalized": "not giving all options and once I booked the service, the persons asked for a double amount. don't use this lucha app.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:28:27"
+  },
+  {
+    "id": "148c75eeb26c517e",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_148c75",
+    "rating": 1.0,
+    "text_raw": "don't ever buy any urban company filter parts, it is worst as it even don't work for two months Don't buy any RO also from Urban company Native product it's the worst and complete waste of money. don't ever take advice of their engineers also, they only pitch for there product which is worst and complete waste of time & money.",
+    "text_normalized": "don't ever buy any urban company filter parts, it is worst as it even don't work for two months Don't buy any RO also from Urban company Native product it's the worst and complete waste of money. don't ever take advice of their engineers also, they only pitch for there product which is worst and complete waste of time & money.",
+    "city": "All India",
+    "service_vertical": "Native Smart Devices",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:12:29"
+  },
+  {
+    "id": "163d8ccef4144b44",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_163d8c",
+    "rating": 5.0,
+    "text_raw": "good service",
+    "text_normalized": "good service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:10:13"
+  },
+  {
+    "id": "2a8987ff6aa41ea1",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_2a8987",
+    "rating": 5.0,
+    "text_raw": "good job",
+    "text_normalized": "good job",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:05:03"
+  },
+  {
+    "id": "c04d9a7ed812e7f3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c04d9a",
+    "rating": 5.0,
+    "text_raw": "vary nice",
+    "text_normalized": "vary nice",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 15:04:41"
+  },
+  {
+    "id": "f73e302f83ec6a99",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f73e30",
+    "rating": 5.0,
+    "text_raw": "nice",
+    "text_normalized": "nice",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 14:27:24"
+  },
+  {
+    "id": "447598c3cafeabd2",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_447598",
+    "rating": 5.0,
+    "text_raw": "I m fully satisfied with your service....",
+    "text_normalized": "I m fully satisfied with your service....",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 14:04:32"
+  },
+  {
+    "id": "f9e0bc0cd6014a42",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_f9e0bc",
+    "rating": 5.0,
+    "text_raw": "Urban company is Good",
+    "text_normalized": "Urban company is Good",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 14:00:41"
+  },
+  {
+    "id": "3eeadb513a4897b0",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_3eeadb",
+    "rating": 1.0,
+    "text_raw": "Stay away from their Spa sessions , they are just going to treat you as their ginni pig ! horrible horrible support",
+    "text_normalized": "Stay away from their Spa sessions , they are just going to treat you as their ginni pig ! horrible horrible support",
+    "city": "All India",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:55:26"
+  },
+  {
+    "id": "7a2cc85dd06f2eb7",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_7a2cc8",
+    "rating": 1.0,
+    "text_raw": "before you buy please check service we are facing service problem from past 4 months and we are not using purifier from 4 months even they respond after the mail for name sake no service nothing useless",
+    "text_normalized": "before you buy please check service we are facing service problem from past 4 months and we are not using purifier from 4 months even they respond after the mail for name sake no service nothing useless",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:55:02"
+  },
+  {
+    "id": "7be7b6fa5cb27335",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_7be7b6",
+    "rating": 1.0,
+    "text_raw": "App is too slow. INR 200 cancellation charge",
+    "text_normalized": "App is too slow. INR 200 cancellation charge",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency",
+      "Punctuality & Reliability",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:42:48"
+  },
+  {
+    "id": "6faa1ec6d4e8ee73",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_6faa1e",
+    "rating": 5.0,
+    "text_raw": "Really happy with the service. Highly recommended",
+    "text_normalized": "Really happy with the service. Highly recommended",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:36:44"
+  },
+  {
+    "id": "32fdc56f9229a61e",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_32fdc5",
+    "rating": 5.0,
+    "text_raw": "Appreciated proper guidance very professional",
+    "text_normalized": "Appreciated proper guidance very professional",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:33:17"
+  },
+  {
+    "id": "3b7c97b822f935b7",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_3b7c97",
+    "rating": 1.0,
+    "text_raw": "In all manner, worthless services, booking experience and after sale services.... \"Hope Less\".....",
+    "text_normalized": "In all manner, worthless services, booking experience and after sale services.... \"Hope Less\".....",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:23:00"
+  },
+  {
+    "id": "b3820af58ab1e481",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_b3820a",
+    "rating": 5.0,
+    "text_raw": "good work",
+    "text_normalized": "good work",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 13:13:42"
+  },
+  {
+    "id": "44a45ac01c6526dc",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_44a45a",
+    "rating": 5.0,
+    "text_raw": "its worth it for our salon experience . The last one was the best. Thank you UC",
+    "text_normalized": "its worth it for our salon experience . The last one was the best. Thank you UC",
+    "city": "All India",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:42:33"
+  },
+  {
+    "id": "b7fb48c843486dd3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_b7fb48",
+    "rating": 3.0,
+    "text_raw": "At UC instead of 1 hr standard service, you provide only 45 minutes. underrated thus.",
+    "text_normalized": "At UC instead of 1 hr standard service, you provide only 45 minutes. underrated thus.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:40:47"
+  },
+  {
+    "id": "12e1410c3ebe290d",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_12e141",
+    "rating": 4.0,
+    "text_raw": "ok ok",
+    "text_normalized": "ok ok",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:14:50"
+  },
+  {
+    "id": "c270e39546ddad42",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c270e3",
+    "rating": 5.0,
+    "text_raw": "insta help is a good idea. It would be good; if they come into the tiles laying and cement works",
+    "text_normalized": "insta help is a good idea. It would be good; if they come into the tiles laying and cement works",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:07:39"
+  },
+  {
+    "id": "6df986245834efb6",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_6df986",
+    "rating": 1.0,
+    "text_raw": "increased platform fee and decreased user satisfaction",
+    "text_normalized": "increased platform fee and decreased user satisfaction",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:06:08"
+  },
+  {
+    "id": "d9749af73f97cefc",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_d9749a",
+    "rating": 1.0,
+    "text_raw": "they would rather lose a customer than let you pause your plan for more than 2 weeks. they expect you to pause it every 2 weeks even if you're going to be away and travelling for a month. how stupid",
+    "text_normalized": "they would rather lose a customer than let you pause your plan for more than 2 weeks. they expect you to pause it every 2 weeks even if you're going to be away and travelling for a month. how stupid",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 12:05:47"
+  },
+  {
+    "id": "0fdc8495ffd0d485",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_0fdc84",
+    "rating": 1.0,
+    "text_raw": "The insta help professional was deliberately working slow and only completed 15-20 dishes in an whole hour and left the whole kitchen unclean and argued as well.",
+    "text_normalized": "The insta help professional was deliberately working slow and only completed 15-20 dishes in an whole hour and left the whole kitchen unclean and argued as well.",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 11:51:45"
+  },
+  {
+    "id": "c0d230c0c3a3a26d",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c0d230",
+    "rating": 5.0,
+    "text_raw": "useful",
+    "text_normalized": "useful",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 11:45:55"
+  },
+  {
+    "id": "632472cb877b4223",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_632472",
+    "rating": 4.0,
+    "text_raw": "service charges high",
+    "text_normalized": "service charges high",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 11:30:55"
+  },
+  {
+    "id": "e1318ee10376a94c",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_e1318e",
+    "rating": 5.0,
+    "text_raw": "Good work",
+    "text_normalized": "Good work",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 11:14:20"
+  },
+  {
+    "id": "87ab84a2cb83daf8",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_87ab84",
+    "rating": 5.0,
+    "text_raw": "good kam",
+    "text_normalized": "good kam",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:57:06"
+  },
+  {
+    "id": "6f85e6abcffde483",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_6f85e6",
+    "rating": 5.0,
+    "text_raw": "good service",
+    "text_normalized": "good service",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:41:24"
+  },
+  {
+    "id": "0795e4f98d788fd6",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_0795e4",
+    "rating": 4.0,
+    "text_raw": "Instant Help to needy people in Bengaluru",
+    "text_normalized": "Instant Help to needy people in Bengaluru",
+    "city": "Bangalore",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:37:27"
+  },
+  {
+    "id": "ca56ee51c95b1ce3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_ca56ee",
+    "rating": 1.0,
+    "text_raw": "Unprofessional company , frequency of cancellation of Booking at peak",
+    "text_normalized": "Unprofessional company , frequency of cancellation of Booking at peak",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:31:33"
+  },
+  {
+    "id": "01b01f769db3ed99",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_01b01f",
+    "rating": 1.0,
+    "text_raw": "Recently I have availed Chimney deep clean service from UC on Nov 2nd. After 15 days of use, oil started dripping from outside indicating some leakage while reinstallation of chimney after service. The chimney was working perfectly fine for the last few years and just after the service the installation appears to be inappropriate. Now I cannot claim warranty as it was just valid for 10 days. I'm extremely unhappy as I already paid almost Rs 1400 and expected to book another paid service.",
+    "text_normalized": "Recently I have availed Chimney deep clean service from UC on Nov 2nd. After 15 days of use, oil started dripping from outside indicating some leakage while reinstallation of chimney after service. The chimney was working perfectly fine for the last few years and just after the service the installation appears to be inappropriate. Now I cannot claim warranty as it was just valid for 10 days. I'm extremely unhappy as I already paid almost Rs 1400 and expected to book another paid service.",
+    "city": "All India",
+    "service_vertical": "Home Cleaning",
+    "aspects": [
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:25:20"
+  },
+  {
+    "id": "c3f8042dc9b488d7",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_c3f804",
+    "rating": 5.0,
+    "text_raw": "so far so good service has been fast and clean .",
+    "text_normalized": "so far so good service has been fast and clean .",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:22:57"
+  },
+  {
+    "id": "69386bb51be43fb3",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_69386b",
+    "rating": 5.0,
+    "text_raw": "In this app can you please add cooking for food options is best for users",
+    "text_normalized": "In this app can you please add cooking for food options is best for users",
+    "city": "All India",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:11:55"
+  },
+  {
+    "id": "38a7e8f66567ea3c",
+    "source": "play_store",
+    "external_url": "https://play.google.com/store/apps/details?id=com.urbanclap.urbanclap",
+    "author_masked": "User_38a7e8",
+    "rating": 1.0,
+    "text_raw": "bad service... agents are charging more money and urban company staff are not replying to any message... there is no way to contact the concerned person...",
+    "text_normalized": "bad service... agents are charging more money and urban company staff are not replying to any message... there is no way to contact the concerned person...",
+    "city": "All India",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 0,
+    "ingested_at": "2026-11-22 10:10:34"
+  },
+  {
+    "id": "318928b065b221ba",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_318928",
+    "rating": 2.0,
+    "text_raw": "Overpriced UC Plus. Subscribed to UC Plus annual plan for discounts, but discounts are capped at Rs 100 per booking. Not worth 999 INR at all.",
+    "text_normalized": "Overpriced UC Plus. Subscribed to UC Plus annual plan for discounts, but discounts are capped at Rs 100 per booking. Not worth 999 INR at all.",
+    "city": "Mumbai",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212535"
+  },
+  {
+    "id": "aeac59764b3343d8",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_aeac59",
+    "rating": 5.0,
+    "text_raw": "Excellent Men's hair grooming. The stylist brought sterilized instruments and took his time. Very premium feel on iOS app.",
+    "text_normalized": "Excellent Men's hair grooming. The stylist brought sterilized instruments and took his time. Very premium feel on iOS app.",
+    "city": "Bangalore",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Pricing & Transparency",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212635"
+  },
+  {
+    "id": "a49fae7b7d5cb6ad",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_a49fae",
+    "rating": 1.0,
+    "text_raw": "Refund took 14 days after partner cancelled doorstep repair. The app kept showing 'in progress' while no one picked up calls.",
+    "text_normalized": "Refund took 14 days after partner cancelled doorstep repair. The app kept showing 'in progress' while no one picked up calls.",
+    "city": "Delhi-NCR",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Punctuality & Reliability",
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212705"
+  },
+  {
+    "id": "7797758df75d4961",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_779775",
+    "rating": 5.0,
+    "text_raw": "Super convenient pest control. Safe chemicals for pets. Clear pre-service instructions in app.",
+    "text_normalized": "Super convenient pest control. Safe chemicals for pets. Clear pre-service instructions in app.",
+    "city": "Pune",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212764"
+  },
+  {
+    "id": "c9c11f088e75161a",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_c9c11f",
+    "rating": 1.0,
+    "text_raw": "Hidden inspection charge! App said free inspection for washing machine with repair, but technician charged 299 when he couldn't fix it.",
+    "text_normalized": "Hidden inspection charge! App said free inspection for washing machine with repair, but technician charged 299 when he couldn't fix it.",
+    "city": "Hyderabad",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Pricing & Transparency",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212812"
+  },
+  {
+    "id": "bec8fd79e2688a15",
+    "source": "app_store",
+    "external_url": "https://apps.apple.com/in/app/urban-company/id1032303419",
+    "author_masked": "iOS_User_bec8fd",
+    "rating": 5.0,
+    "text_raw": "Salon pedicure service at home was luxurious and mess-free. Clean towels and polite professional.",
+    "text_normalized": "Salon pedicure service at home was luxurious and mess-free. Clean towels and polite professional.",
+    "city": "Bangalore",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 3,
+    "ingested_at": "2026-11-24 10:51:12.212861"
+  },
+  {
+    "id": "225538bdfceb00ed",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_225538",
+    "rating": null,
+    "text_raw": "PSA: Urban Company AC repair technicians are overcharging for gas recharge in Bangalore. Every technician says gas leak within 2 minutes of opening the AC and asks 3.5k in cash without warranty. Local technician verified gas pressure was completely normal. Total scam.",
+    "text_normalized": "PSA: Urban Company AC repair technicians are overcharging for gas recharge in Bangalore. Every technician says gas leak within 2 minutes of opening the AC and asks 3.5k in cash without warranty. Local technician verified gas pressure was completely normal. Total scam.",
+    "city": "Bangalore",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Pricing & Transparency",
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": true,
+    "is_hinglish": false,
+    "upvotes": 142,
+    "ingested_at": "2026-11-24 10:51:17.371120"
+  },
+  {
+    "id": "4134555fcbf1a8fb",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_413455",
+    "rating": null,
+    "text_raw": "Urban company deep cleaning experience in Whitefield: booked for 3BHK full home deep clean. Team of 3 came on time with industrial vacuum and scrubbing machines. Cleaned balcony and kitchen thoroughly. Very satisfied.",
+    "text_normalized": "Urban company deep cleaning experience in Whitefield: booked for 3BHK full home deep clean. Team of 3 came on time with industrial vacuum and scrubbing machines. Cleaned balcony and kitchen thoroughly. Very satisfied.",
+    "city": "Bangalore",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Punctuality & Reliability"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 89,
+    "ingested_at": "2026-11-24 10:51:17.371215"
+  },
+  {
+    "id": "528548fdc1c26716",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_528548",
+    "rating": null,
+    "text_raw": "Is Urban Company Plus actually worth it for single working professionals? Did the math: if you book salon once a month and cleaning once a quarter, you break even. But terms keep changing.",
+    "text_normalized": "Is Urban Company Plus actually worth it for single working professionals? Did the math: if you book salon once a month and cleaning once a quarter, you break even. But terms keep changing.",
+    "city": "Mumbai",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Partner Conduct & Safety",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 54,
+    "ingested_at": "2026-11-24 10:51:17.371265"
+  },
+  {
+    "id": "38ad2f84f93fceb8",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_38ad2f",
+    "rating": null,
+    "text_raw": "UC technician refused to complete plumbing work because of heavy rain in Gurgaon. Left the bathroom pipes open and left. Customer care chatbot is completely useless in emergencies.",
+    "text_normalized": "UC technician refused to complete plumbing work because of heavy rain in Gurgaon. Left the bathroom pipes open and left. Customer care chatbot is completely useless in emergencies.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Home Cleaning",
+    "aspects": [
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 98,
+    "ingested_at": "2026-11-24 10:51:17.371317"
+  },
+  {
+    "id": "cbaa63136f40fed7",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_cbaa63",
+    "rating": null,
+    "text_raw": "Partner strikes and commission cuts: Spoke to a salon partner today, she mentioned UC takes nearly 25-30% cut plus kit charges. No wonder quality is fluctuating because experienced partners are moving to independent salons.",
+    "text_normalized": "Partner strikes and commission cuts: Spoke to a salon partner today, she mentioned UC takes nearly 25-30% cut plus kit charges. No wonder quality is fluctuating because experienced partners are moving to independent salons.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Pricing & Transparency",
+      "Service Quality",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 215,
+    "ingested_at": "2026-11-24 10:51:17.371368"
+  },
+  {
+    "id": "db8181a9b8790e64",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_db8181",
+    "rating": null,
+    "text_raw": "Native water purifier review after 6 months: Machine design is very sleek and filter life indicator on app is convenient. Replacement filter was delivered in 24 hours.",
+    "text_normalized": "Native water purifier review after 6 months: Machine design is very sleek and filter life indicator on app is convenient. Replacement filter was delivered in 24 hours.",
+    "city": "Hyderabad",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 67,
+    "ingested_at": "2026-11-24 10:51:17.371409"
+  },
+  {
+    "id": "eb23fe43b4073dd2",
+    "source": "reddit",
+    "external_url": "https://reddit.com/r/india",
+    "author_masked": "redditor_eb23fe",
+    "rating": null,
+    "text_raw": "Horrible experience with Urban Company carpenter in Pune. Drilled through an electrical conduit and cut off power to my apartment. Zero compensation from UC.",
+    "text_normalized": "Horrible experience with Urban Company carpenter in Pune. Drilled through an electrical conduit and cut off power to my apartment. Zero compensation from UC.",
+    "city": "Pune",
+    "service_vertical": "Plumber & Electrician",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 112,
+    "ingested_at": "2026-11-24 10:51:17.371461"
+  },
+  {
+    "id": "d78fcf3c6c216580",
+    "source": "consumer_forum",
+    "external_url": "https://consumercomplaints.in/dispute/104921",
+    "author_masked": "Complainant_d78fcf",
+    "rating": 1.0,
+    "text_raw": "Unresolved dispute regarding water damage to wooden flooring during sofa shampooing. Filed complaint with National Consumer Helpline after UC customer support closed ticket without inspection. Demanding compensation of Rs 25,000 for floor restoration.",
+    "text_normalized": "Unresolved dispute regarding water damage to wooden flooring during sofa shampooing. Filed complaint with National Consumer Helpline after UC customer support closed ticket without inspection. Demanding compensation of Rs 25,000 for floor restoration.",
+    "city": "Mumbai",
+    "service_vertical": "Home Cleaning",
+    "aspects": [
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371564"
+  },
+  {
+    "id": "adf2d5f9dcdb4a31",
+    "source": "consumer_forum",
+    "external_url": "https://trustpilot.com/review/urbancompany/12093",
+    "author_masked": "Complainant_adf2d5",
+    "rating": 1.0,
+    "text_raw": "Urban Company Native Smart lock stopped working within 3 weeks of installation. Door locked from outside with infant inside. Emergency service arrived after 4 hours. Serious safety hazard and negligence.",
+    "text_normalized": "Urban Company Native Smart lock stopped working within 3 weeks of installation. Door locked from outside with infant inside. Emergency service arrived after 4 hours. Serious safety hazard and negligence.",
+    "city": "Bangalore",
+    "service_vertical": "Native Smart Devices",
+    "aspects": [
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371619"
+  },
+  {
+    "id": "7a6cbcafdaf5adae",
+    "source": "consumer_forum",
+    "external_url": "https://consumercomplaints.in/dispute/105432",
+    "author_masked": "Complainant_7a6cbc",
+    "rating": 1.0,
+    "text_raw": "Refund not processed for cancelled salon appointment. Charged Rs 1,499 on credit card, app status says refunded but bank ARN number provided is invalid. 3 weeks of email follow-ups with no reply.",
+    "text_normalized": "Refund not processed for cancelled salon appointment. Charged Rs 1,499 on credit card, app status says refunded but bank ARN number provided is invalid. 3 weeks of email follow-ups with no reply.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Salon & Spa",
+    "aspects": [
+      "Pricing & Transparency",
+      "Punctuality & Reliability",
+      "Customer Support & Refunds",
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371659"
+  },
+  {
+    "id": "fece5189f0d7e5b5",
+    "source": "consumer_forum",
+    "external_url": "https://trustpilot.com/review/urbancompany/12188",
+    "author_masked": "Complainant_fece51",
+    "rating": 1.0,
+    "text_raw": "AC gas charging done on 10th May with 60 days warranty. AC stopped cooling again on 24th May. UC assigned a different technician who claimed previous technician used fake gas and refused warranty repair without new payment.",
+    "text_normalized": "AC gas charging done on 10th May with 60 days warranty. AC stopped cooling again on 24th May. UC assigned a different technician who claimed previous technician used fake gas and refused warranty repair without new payment.",
+    "city": "Hyderabad",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371702"
+  },
+  {
+    "id": "016937a502f7ebb4",
+    "source": "consumer_forum",
+    "external_url": "https://consumercomplaints.in/dispute/106721",
+    "author_masked": "Complainant_016937",
+    "rating": 1.0,
+    "text_raw": "Plumbing work caused major leakage in lower flat. Society management issued penalty notice to me. Urban Company terms of service limit liability to Rs 500 which is completely unfair.",
+    "text_normalized": "Plumbing work caused major leakage in lower flat. Society management issued penalty notice to me. Urban Company terms of service limit liability to Rs 500 which is completely unfair.",
+    "city": "Pune",
+    "service_vertical": "Plumber & Electrician",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371751"
+  },
+  {
+    "id": "f635954385ef8761",
+    "source": "consumer_forum",
+    "external_url": "https://trustpilot.com/review/urbancompany/12245",
+    "author_masked": "Complainant_f63595",
+    "rating": 2.0,
+    "text_raw": "Kitchen deep cleaning was satisfactory but the staff used abrasive wire mesh on stainless steel chimney causing permanent scratches. Support gave 150 rs voucher.",
+    "text_normalized": "Kitchen deep cleaning was satisfactory but the staff used abrasive wire mesh on stainless steel chimney causing permanent scratches. Support gave 150 rs voucher.",
+    "city": "Bangalore",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Customer Support & Refunds"
+    ],
+    "sentiment_score": -0.5,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371786"
+  },
+  {
+    "id": "769cb63ead29dc10",
+    "source": "consumer_forum",
+    "external_url": "https://consumercomplaints.in/dispute/107891",
+    "author_masked": "Complainant_769cb6",
+    "rating": 1.0,
+    "text_raw": "Technician arrived smelling of alcohol for evening geyser repair. Cancelled immediately due to safety concerns for female family members. Urban Company charged Rs 100 cancellation fee to ME instead of penalizing partner.",
+    "text_normalized": "Technician arrived smelling of alcohol for evening geyser repair. Cancelled immediately due to safety concerns for female family members. Urban Company charged Rs 100 cancellation fee to ME instead of penalizing partner.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "Pricing & Transparency",
+      "Punctuality & Reliability",
+      "Partner Conduct & Safety"
+    ],
+    "sentiment_score": -1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 15,
+    "ingested_at": "2026-11-24 10:51:17.371829"
+  },
+  {
+    "id": "41885ed8ccd2711c",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample1",
+    "author_masked": "yt_viewer_41885e",
+    "rating": null,
+    "text_raw": "Urban Company cleaning is good only if you stand on their head the entire time. The moment you leave the room they skip cleaning behind the fridge and under sofa.",
+    "text_normalized": "Urban Company cleaning is good only if you stand on their head the entire time. The moment you leave the room they skip cleaning behind the fridge and under sofa.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 340,
+    "ingested_at": "2026-11-24 10:51:17.371894"
+  },
+  {
+    "id": "62fc97a5efa953a6",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample2",
+    "author_masked": "yt_viewer_62fc97",
+    "rating": null,
+    "text_raw": "Honestly the bridal salon package was amazing. The beautician took 4 hours and did everything with utmost care. Much better than going to a salon in peak traffic.",
+    "text_normalized": "Honestly the bridal salon package was amazing. The beautician took 4 hours and did everything with utmost care. Much better than going to a salon in peak traffic.",
+    "city": "Mumbai",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 185,
+    "ingested_at": "2026-11-24 10:51:17.371937"
+  },
+  {
+    "id": "93dd0b2e6f22d770",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample3",
+    "author_masked": "yt_viewer_93dd0b",
+    "rating": null,
+    "text_raw": "Technicians are getting paid less each year because of company commission hikes. You can see their lack of motivation in how rushed the AC foam jet service was.",
+    "text_normalized": "Technicians are getting paid less each year because of company commission hikes. You can see their lack of motivation in how rushed the AC foam jet service was.",
+    "city": "Bangalore",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 420,
+    "ingested_at": "2026-11-24 10:51:17.371978"
+  },
+  {
+    "id": "930eb15b33b9f3b5",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample4",
+    "author_masked": "yt_viewer_930eb1",
+    "rating": null,
+    "text_raw": "Maine bhi karwaya tha AC service. Foam jet se coil clean kiya aur pura room ganda kar diya. Bad me bolte hain wall safai hamara kaam nahi hai.",
+    "text_normalized": "Maine bhi karwaya tha AC service. Foam jet se coil clean kiya aur pura room ganda kar diya. Bad me bolte hain wall safai hamara kaam nahi hai.",
+    "city": "Delhi-NCR",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": true,
+    "upvotes": 95,
+    "ingested_at": "2026-11-24 10:51:17.372020"
+  },
+  {
+    "id": "734d7cbb91429b99",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample5",
+    "author_masked": "yt_viewer_734d7c",
+    "rating": null,
+    "text_raw": "Their RO water purifier Native M1 is actually super quiet compared to Kent or Aquaguard. But keep in mind replacement cartridge is proprietary so you are locked in.",
+    "text_normalized": "Their RO water purifier Native M1 is actually super quiet compared to Kent or Aquaguard. But keep in mind replacement cartridge is proprietary so you are locked in.",
+    "city": "Bangalore",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "App UX & UC Plus"
+    ],
+    "sentiment_score": 0.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 128,
+    "ingested_at": "2026-11-24 10:51:17.372061"
+  },
+  {
+    "id": "76bbeedaf3b89db9",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample6",
+    "author_masked": "yt_viewer_76bbee",
+    "rating": null,
+    "text_raw": "The before and after of bathroom deep clean in this video looks exactly like my experience in Pune. Removed hard water stains from tiles completely.",
+    "text_normalized": "The before and after of bathroom deep clean in this video looks exactly like my experience in Pune. Removed hard water stains from tiles completely.",
+    "city": "Pune",
+    "service_vertical": "Appliance Repair",
+    "aspects": [
+      "General Experience"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 72,
+    "ingested_at": "2026-11-24 10:51:17.372103"
+  },
+  {
+    "id": "3179c09659f26106",
+    "source": "youtube",
+    "external_url": "https://youtube.com/watch?v=sample7",
+    "author_masked": "yt_viewer_3179c0",
+    "rating": null,
+    "text_raw": "Watch out for add-on charges! The partner tried to convince my mom that chimney motor needs chemical wash for 1200 extra. Good thing I was there to say no.",
+    "text_normalized": "Watch out for add-on charges! The partner tried to convince my mom that chimney motor needs chemical wash for 1200 extra. Good thing I was there to say no.",
+    "city": "Hyderabad",
+    "service_vertical": "General / Platform",
+    "aspects": [
+      "Pricing & Transparency"
+    ],
+    "sentiment_score": 1.0,
+    "churn_intent_flag": false,
+    "is_hinglish": false,
+    "upvotes": 210,
+    "ingested_at": "2026-11-24 10:51:17.372158"
+  }
+]

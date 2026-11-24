@@ -1,0 +1,43 @@
+# Virtual Environment
+backend/.venv/
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Database temporary WAL files (keep base SQLite .db file, ignore transient write-ahead locks)
+*.db-shm
+*.db-wal
+*.db-journal
+
+# Node & Frontend
+node_modules/
+.npm/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
