@@ -1,7 +1,7 @@
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from backend.app.core.config import settings
 from backend.app.api.endpoints import router as api_router
@@ -35,7 +35,7 @@ if STATIC_DIR.exists():
 def serve_index():
     index_file = STATIC_DIR / "index.html"
     if index_file.exists():
-        return FileResponse(index_file)
+        return HTMLResponse(content=index_file.read_text(encoding="utf-8"))
     return {
         "message": "Urban Company AI Opportunity & Discovery Engine API",
         "docs": "/docs",
@@ -46,7 +46,7 @@ def serve_index():
 def serve_dashboard():
     index_file = STATIC_DIR / "index.html"
     if index_file.exists():
-        return FileResponse(index_file)
+        return HTMLResponse(content=index_file.read_text(encoding="utf-8"))
     return {"error": "Dashboard index.html not found"}
 
 if __name__ == "__main__":

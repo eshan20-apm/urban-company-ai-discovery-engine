@@ -17,7 +17,19 @@ from backend.app.models.schemas import (
 
 class Database:
     def __init__(self, db_path: Optional[Path] = None):
-        self.db_path = db_path or settings.DB_PATH
+        import os
+        import shutil
+
+        # In Vercel serverless, /var/task is read-only. Copy seed database to /tmp so SQLite can run in WAL mode with live writes.
+        if os.environ.get("VERCEL"):
+            tmp_db = Path("/tmp/discovery_engine.db")
+            seed_db = settings.DB_PATH
+            if not tmp_db.exists() and seed_db.exists():
+                shutil.copy2(seed_db, tmp_db)
+            self.db_path = tmp_db
+        else:
+            self.db_path = db_path or settings.DB_PATH
+
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self.init_db()
 
