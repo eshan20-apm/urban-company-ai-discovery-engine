@@ -1,6 +1,9 @@
 # Urban Company AI Opportunity & Discovery Engine
 > An enterprise-grade customer intelligence and business metric quantification system that analyzes multi-channel public feedback at scale.
 
+- **Live Public URL**: [https://urban-company-ai-discovery-engine.vercel.app](https://urban-company-ai-discovery-engine.vercel.app)
+- **GitHub Repository**: [https://github.com/eshan20-apm/urban-company-ai-discovery-engine](https://github.com/eshan20-apm/urban-company-ai-discovery-engine)
+
 ---
 
 ## 🌟 Overview & Core Philosophy
