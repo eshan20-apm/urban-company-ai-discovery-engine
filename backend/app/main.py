@@ -1,5 +1,5 @@
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,6 +13,24 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
+
+# Vercel Serverless Path Rewrite Middleware
+@app.middleware("http")
+async def vercel_path_rewrite_middleware(request: Request, call_next):
+    # When deployed on Vercel, requests rewritten to /api/index.py carry the real path in x-matched-path or path query param
+    matched_path = (
+        request.headers.get("x-matched-path")
+        or request.headers.get("x-vercel-matched-path")
+        or request.query_params.get("path")
+    )
+    current_path = request.scope.get("path", "")
+    if matched_path and current_path in ["/api/index.py", "/api"]:
+        clean_path = matched_path.split("?")[0]
+        request.scope["path"] = clean_path
+    elif current_path in ["/api/index.py", "/api"]:
+        request.scope["path"] = "/"
+
+    return await call_next(request)
 
 # Enable CORS for cross-origin frontend requests
 app.add_middleware(
