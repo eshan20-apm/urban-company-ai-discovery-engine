@@ -71,17 +71,39 @@ class QueryDecomposer:
             verticals.append(ServiceVertical.GENERAL.value)
 
         # C. Intent & Topic Pattern Matching
-        # 1. Retention, 90-Day window, Repeat Booking, Offline Technician Leakage
-        if any(p in query_lower for p in ["90", "90day", "repeat", "after booking", "next booking", "what customers are doing", "subsequent", "months after"]):
-            interpreted_intent = "90-Day Cohort Retention, Repeat Booking Behavior & Offline Vendor Defection"
-            core_topic = "retention_and_repeat_behavior"
-            target_aspects = ["Pricing & Transparency", "App UX & UC Plus", "Customer Support & Refunds"]
+        # 1. Offline Technician Leakage / Direct Contact / WhatsApp / Cash outside app
+        if any(p in query_lower for p in ["direct", "whatsapp", "outside app", "cash payment directly", "without app", "deal directly"]):
+            interpreted_intent = "Doorstep Disintermediation & Offline Technician Contact Defection"
+            core_topic = "offline_defection"
+            target_aspects = ["Pricing & Transparency", "Partner Conduct & Safety"]
             search_vectors = [
                 "Urban Company technician contact directly whatsapp cash",
-                "Urban company repeat booking service dropoff months",
-                "Urban company warranty claim after booking"
+                "Urban company technician deal outside app",
+                "Urban company offline service booking"
             ]
-            semantic_keywords = ["repeat", "retention", "whatsapp", "cash", "offline", "technician", "direct", "booking", "again", "churn", "warranty"]
+            semantic_keywords = ["whatsapp", "cash", "offline", "direct", "technician", "outside", "app", "phone", "number"]
+            is_vague = False
+
+        # 2. Retention, Cohort Windows, Repeat Booking & Post-Booking Behavior
+        elif any(p in query_lower for p in ["repeat", "retention", "rebook", "next booking", "subsequent", "after booking", "after the last booking", "what customers are doing", "cohort", "come back"]):
+            if time_horizon:
+                qty_unit = time_horizon.replace('_', '-').upper() if 'day' in time_horizon else time_horizon.replace('_', ' ').title()
+                interpreted_intent = f"{qty_unit} Customer Retention & Repeat Booking Dynamics"
+                search_vectors = [
+                    f"Urban company repeat booking {time_horizon.replace('_', ' ')}",
+                    f"Urban company customer retention repeat service dropoff",
+                    f"Urban company rebook after {time_horizon.replace('_', ' ')}"
+                ]
+            else:
+                interpreted_intent = "Customer Repeat Booking Behavior & Platform Re-engagement"
+                search_vectors = [
+                    "Urban company repeat booking service frequency",
+                    "Urban company customer rebooking dropoff pattern",
+                    "Urban company repeat customer experience"
+                ]
+            core_topic = "retention_and_repeat_behavior"
+            target_aspects = ["Pricing & Transparency", "App UX & UC Plus", "Customer Support & Refunds"]
+            semantic_keywords = ["repeat", "retention", "booking", "again", "subsequent", "frequency", "dropoff", "rebook", "customer"]
             is_vague = False
 
         # 2. Explicit Churn / Defection / Stopping usage

@@ -84,14 +84,18 @@ class CopilotService:
         if item.service_vertical.value in decomposition.target_verticals:
             score += 2.5
 
-        # Temporal / Cohort horizon matching (e.g. 90-day retention, repeat booking)
+        # Temporal / Cohort horizon matching
         if decomposition.time_horizon:
-            if "90" in decomposition.time_horizon or "month" in decomposition.time_horizon:
-                if any(w in text_lower for w in ["90", "month", "months", "repeat", "subsequent", "after", "again", "direct", "whatsapp", "cash"]):
-                    score += 3.5
-            elif "same_day" in decomposition.time_horizon:
-                if any(w in text_lower for w in ["same day", "late", "delay", "cancel", "slot", "urgent"]):
-                    score += 3.5
+            qty_match = re.search(r'\d+', decomposition.time_horizon)
+            if qty_match and qty_match.group(0) in text_lower:
+                score += 3.5
+            if any(w in text_lower for w in ["month", "months", "repeat", "subsequent", "after", "again"]):
+                score += 2.0
+            if "same_day" in decomposition.time_horizon and any(w in text_lower for w in ["same day", "late", "delay", "cancel", "slot", "urgent"]):
+                score += 3.5
+        elif decomposition.core_topic == "retention_and_repeat_behavior":
+            if any(w in text_lower for w in ["repeat", "again", "second time", "next time", "rebook", "frequency"]):
+                score += 3.0
 
         # Churn intent correlation
         if item.churn_intent_flag and decomposition.core_topic in ["churn_and_defection", "retention_and_repeat_behavior", "support_and_refunds", "pricing_transparency"]:
@@ -210,8 +214,13 @@ class CopilotService:
             )
 
         metric_name = "Customer Retention & CSAT"
-        if "pricing & transparency" in [a.lower() for a in aspects_matched]:
-            metric_name = "90-Day Repeat Rate & Pricing Trust"
+        if decomposition.time_horizon:
+            horizon_label = decomposition.time_horizon.replace('_', '-').upper() if 'day' in decomposition.time_horizon else decomposition.time_horizon.replace('_', ' ').title()
+            metric_name = f"{horizon_label} Customer Retention & Cohort Repeat Rate"
+        elif decomposition.core_topic == "retention_and_repeat_behavior":
+            metric_name = "Customer Repeat Booking Rate & Platform CSAT"
+        elif "pricing & transparency" in [a.lower() for a in aspects_matched]:
+            metric_name = "Doorstep Pricing Transparency & Quote Trust"
         elif "punctuality & reliability" in [a.lower() for a in aspects_matched]:
             metric_name = "Same-Day Doorstep Cancellation Rate"
         elif "customer support & refunds" in [a.lower() for a in aspects_matched]:

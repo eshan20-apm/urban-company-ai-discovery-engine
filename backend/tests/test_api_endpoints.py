@@ -108,9 +108,18 @@ def test_discovery_search_endpoints():
     assert resp3.status_code == 200
     data3 = resp3.json()
     assert "interpreted_intent" in data3
-    assert "90-Day" in data3["interpreted_intent"] or "Retention" in data3["interpreted_intent"]
+    assert "90-DAY" in data3["interpreted_intent"] or "90-Day" in data3["interpreted_intent"] or "Retention" in data3["interpreted_intent"]
     assert "decomposition" in data3
     assert data3["decomposition"]["time_horizon"] == "90_day"
+
+    # Test example 4: Repeat booking query without cohort window (should NOT have 90)
+    resp4 = client.get("/api/v1/discovery/search?q=what%20is%20the%20repeat%20booking%20behaviour%20of%20the%20customers?")
+    assert resp4.status_code == 200
+    data4 = resp4.json()
+    assert "interpreted_intent" in data4
+    assert "90" not in data4["interpreted_intent"]
+    assert "Repeat Booking" in data4["interpreted_intent"]
+    assert data4["decomposition"]["time_horizon"] is None
 
 def test_export_csv_endpoints():
     # 1. Export all feedback items

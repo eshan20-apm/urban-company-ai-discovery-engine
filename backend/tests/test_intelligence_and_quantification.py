@@ -67,11 +67,19 @@ def test_query_decomposer_retention_and_cohort():
     from backend.app.intelligence.query_decomposer import query_decomposer
     res = query_decomposer.decompose_query("what urban company customers are doing within 90days after the last booking?")
     assert res.time_horizon == "90_day"
-    assert "90-Day" in res.interpreted_intent or "Retention" in res.interpreted_intent
+    assert "90-DAY" in res.interpreted_intent or "90-Day" in res.interpreted_intent or "Retention" in res.interpreted_intent
     assert res.core_topic == "retention_and_repeat_behavior"
     assert len(res.search_vectors) >= 2
-    assert any("whatsapp" in sv.lower() or "repeat" in sv.lower() for sv in res.search_vectors)
     assert "repeat" in res.semantic_keywords or "retention" in res.semantic_keywords
+
+def test_query_decomposer_repeat_booking_without_cohort():
+    from backend.app.intelligence.query_decomposer import query_decomposer
+    # Test query WITHOUT 90 days - must not contain '90' in intent or title
+    res = query_decomposer.decompose_query("what is the repeat booking behaviour of the customers?")
+    assert res.time_horizon is None
+    assert "90" not in res.interpreted_intent
+    assert "Repeat Booking" in res.interpreted_intent
+    assert res.core_topic == "retention_and_repeat_behavior"
 
 def test_query_decomposer_pricing_and_vague_queries():
     from backend.app.intelligence.query_decomposer import query_decomposer
