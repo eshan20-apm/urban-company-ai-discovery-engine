@@ -12,6 +12,7 @@ The **Urban Company AI Opportunity & Discovery Engine** transitions beyond tradi
 
 ### Key Differentiators:
 - **Zero-Intrusion Compliance**: Ingests exclusively from permitted public endpoints (Google Play Store, Apple App Store, Indian Subreddits, Trustpilot, Consumer Complaints Forums, YouTube comments, and public Shareholder Letters). Zero private app or authenticated session scraping.
+- **Semantic Query Decomposer & Intent Resolver**: Translates natural, colloquial, or vague English queries into structured business intent, resolves temporal windows (e.g. 90-day retention, same-day cancellations), and synthesizes authentic human search vectors for live web scraping.
 - **Hinglish & Vernacular Normalizer**: Translates code-mixed Indian idioms (e.g., *"AC cooling nahi kar raha tha, technician bola gas leak hai"*) into normalized English while preserving emotional intensity.
 - **Causal Event Extraction**: Breaks feedback into causal event triples: `[Friction Trigger] -> [Customer Reaction] -> [Business Metric Drag]`.
 - **RICE & Empirical Quantification**: Calculates Volume Reach ($R_i$), NPS Drag ($S_i$), Churn Elasticity ($C_i$), and Estimated Annual Revenue Leakage ($L_i$).

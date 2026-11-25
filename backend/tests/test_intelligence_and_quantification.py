@@ -63,3 +63,34 @@ def test_quantification_and_simulation():
     assert "₹" in sim_result.recovered_annual_revenue
     print(f"\n[Simulation Passed for {test_opp.id}]:", sim_result.model_dump())
 
+def test_query_decomposer_retention_and_cohort():
+    from backend.app.intelligence.query_decomposer import query_decomposer
+    res = query_decomposer.decompose_query("what urban company customers are doing within 90days after the last booking?")
+    assert res.time_horizon == "90_day"
+    assert "90-Day" in res.interpreted_intent or "Retention" in res.interpreted_intent
+    assert res.core_topic == "retention_and_repeat_behavior"
+    assert len(res.search_vectors) >= 2
+    assert any("whatsapp" in sv.lower() or "repeat" in sv.lower() for sv in res.search_vectors)
+    assert "repeat" in res.semantic_keywords or "retention" in res.semantic_keywords
+
+def test_query_decomposer_pricing_and_vague_queries():
+    from backend.app.intelligence.query_decomposer import query_decomposer
+    # Doorstep cash / extra charge
+    res_price = query_decomposer.decompose_query("technicians taking extra money")
+    assert res_price.core_topic == "pricing_transparency"
+    assert "Pricing" in res_price.interpreted_intent or "Cash" in res_price.interpreted_intent
+
+    # Churn / App delete
+    res_churn = query_decomposer.decompose_query("why do people stop using it and delete the app")
+    assert res_churn.core_topic == "churn_and_defection"
+    assert "Churn" in res_churn.interpreted_intent or "Defection" in res_churn.interpreted_intent
+
+    # Delays & cancellations
+    res_cancel = query_decomposer.decompose_query("partner cancelled slot at the last minute")
+    assert res_cancel.core_topic == "punctuality_and_cancellation"
+
+    # Generalized topic
+    res_general = query_decomposer.decompose_query("salon hygiene and facial cleanup")
+    assert ServiceVertical.SALON_SPA.value in res_general.target_verticals
+
+

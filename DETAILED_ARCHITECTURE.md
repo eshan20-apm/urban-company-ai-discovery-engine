@@ -18,6 +18,12 @@ The **Urban Company AI Opportunity & Discovery Engine** is built around five non
 
 ```mermaid
 flowchart TD
+    subgraph L0 ["Layer 0: Semantic Query Understanding & Intent Decomposition"]
+        QD_AGENT["Query Decomposer & Intent Resolver\n(Natural / Colloquial / Vague Input)"]
+        QD_SCHEMA["Decomposition Schema:\n• Interpreted Business Intent\n• Temporal/Cohort Horizon\n• Target Aspects & Verticals\n• Multi-Vector Web Search Phrases"]
+        QD_AGENT --> QD_SCHEMA
+    end
+
     subgraph L1 ["Layer 1: Permitted Multi-Source Ingestion Engine"]
         PS["Google Play Store Ingestor\n(google-play-scraper)"]
         AS["Apple App Store Ingestor\n(app-store-scraper)"]
@@ -93,6 +99,26 @@ flowchart TD
 │ • Hybrid RAG engine     │ • Streaming SSE copilot    │ • Sensitivity simulation widget │
 └─────────────────────────┴────────────────────────────┴─────────────────────────────────┘
 ```
+
+#### 3.0 Subsystem 0: Semantic Query Understanding & Intelligent Decomposition Subsystem
+
+To handle natural, informal, and potentially vague user queries (e.g., *"why do people stop using after 3 months"*, *"technicians taking extra money on door"*, *"what customers do within 90 days after booking"*), the engine employs an intelligent pre-processing decomposer (`QueryDecomposer`):
+
+```python
+class QueryDecomposition(BaseModel):
+    raw_query: str
+    interpreted_intent: str                  # High-level business intent
+    core_topic: str                          # Specific domain topic
+    time_horizon: Optional[str] = None       # e.g. "90_days", "same_day", "seasonal"
+    relevant_aspects: List[str]              # Mapped operational aspects
+    target_verticals: List[str]              # Affected service categories
+    search_vectors: List[str]                # 2-3 realistic human search phrases for web scrapers
+    negative_filters: List[str]              # Distractor terms to avoid
+```
+
+The decomposer operates in dual mode:
+1. **LLM Decomposition (Zero-Shot Reasoning)**: Analyzes the conversational prompt, extracts semantic intent, resolves temporal references, and formulates authentic consumer search phrases.
+2. **Domain Taxonomy Matrix (Deterministic High-Speed Fallback)**: A high-coverage keyword, phrase, and regex intent dictionary that maps common customer journey friction points (retention windows, pricing disputes, punctuality, cancellations, warranty claims) with zero external network dependencies.
 
 #### 3.1 Subsystem 1: Ingestion & Extraction Engine
 

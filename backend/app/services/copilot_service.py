@@ -1,8 +1,9 @@
 import re
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Any, Tuple, Optional
 from backend.app.db.database import db
 from backend.app.models.schemas import FeedbackItem
 from backend.app.scrapers.live_ingestor import live_ingestor, extract_search_keywords
+from backend.app.intelligence.query_decomposer import query_decomposer, QueryDecomposition
 
 GENERIC_WORDS = {
     "booking", "book", "booked", "service", "services", "urban", "company",
@@ -13,89 +14,114 @@ GENERIC_WORDS = {
 class CopilotService:
     """
     Grounded AI Discovery Engine:
-    1. Triggers live internet ingestion (Reddit global & subreddits, Play Store) for EVERY query.
-    2. Semantically searches the enriched feedback corpus.
-    3. Enforces an Honest Fallback: If insufficient public feedback exists, reports a data gap.
-    4. Delivers full unabridged content and source tags so users can maximize and read cards in full.
+    1. Interprets natural/vague language queries via Semantic Query Decomposer.
+    2. Triggers live internet ingestion (Reddit global & subreddits, Play Store) for EVERY query.
+    3. Semantically searches and ranks the enriched feedback corpus.
+    4. Enforces an Honest Fallback: If insufficient public feedback exists, reports a data gap.
+    5. Delivers full unabridged content and source tags so users can maximize and read cards in full.
     """
 
     def answer_query(self, query: str) -> Dict[str, Any]:
         cleaned_query = query.strip()
-        keywords = extract_search_keywords(cleaned_query)
-        specific_keywords = [kw for kw in keywords if kw not in GENERIC_WORDS]
 
-        # 1. Trigger Live Ingestion over the Internet for EVERY Search Query
-        live_result = live_ingestor.ingest_live(cleaned_query)
+        # 1. Semantic Query Understanding & Intent Decomposition
+        decomposition = query_decomposer.decompose_query(cleaned_query)
 
-        # 2. Retrieve & Rank Feedback Items from SQLite Database
+        # 2. Trigger Live Ingestion over the Internet for EVERY Search Query using decomposed vectors
+        live_result = live_ingestor.ingest_live(cleaned_query, decomposition=decomposition)
+
+        # 3. Retrieve & Rank Feedback Items from SQLite Database using decomposed semantics
         all_items = db.get_feedback_items(limit=500)
         scored_items: List[Tuple[float, FeedbackItem]] = []
 
         for item in all_items:
-            score = self._compute_relevance_score(item, keywords, specific_keywords, cleaned_query)
+            score = self._compute_relevance_score(item, decomposition, cleaned_query)
             if score > 0:
                 scored_items.append((score, item))
 
         scored_items.sort(key=lambda x: -x[0])
         matched_items = [item for score, item in scored_items if score >= 3.0]
 
-        # 3. Honest Data Sufficiency Gate
+        # 4. Honest Data Sufficiency Gate
         if len(matched_items) < 2:
-            return self._build_insufficient_data_response(cleaned_query, live_result, len(all_items))
+            return self._build_insufficient_data_response(cleaned_query, live_result, len(all_items), decomposition)
 
-        # 4. Dynamic Synthesis from Grounded Data (with full unabridged text for maximizing)
+        # 5. Dynamic Synthesis from Grounded Data (with full unabridged text for maximizing)
         top_matches = matched_items[:6]
-        return self._synthesize_grounded_analysis(cleaned_query, top_matches, live_result)
+        return self._synthesize_grounded_analysis(cleaned_query, top_matches, live_result, decomposition)
 
     def _compute_relevance_score(
         self,
         item: FeedbackItem,
-        all_keywords: List[str],
-        specific_keywords: List[str],
+        decomposition: QueryDecomposition,
         raw_query: str
     ) -> float:
         text_lower = (item.text_normalized + " " + item.text_raw).lower()
-
-        if specific_keywords:
-            has_specific_match = any(
-                re.search(rf'\b{re.escape(sk)}\b', text_lower) or sk in text_lower
-                for sk in specific_keywords
-            )
-            if not has_specific_match:
-                return 0.0
-
         score = 0.0
 
+        # Exact / Substring match for key phrases
         if len(raw_query) > 10 and raw_query.lower() in text_lower:
             score += 10.0
 
-        for kw in all_keywords:
-            if re.search(rf'\b{re.escape(kw)}\b', text_lower):
+        # Semantic keywords matching
+        matched_kws = 0
+        for kw in decomposition.semantic_keywords:
+            if re.search(rf'\b{re.escape(kw.lower())}\b', text_lower):
+                score += 3.5
+                matched_kws += 1
+            elif kw.lower() in text_lower:
+                score += 1.5
+                matched_kws += 1
+
+        # Target operational aspects matching
+        for aspect in item.aspects:
+            if aspect in decomposition.target_aspects:
                 score += 3.0
-            elif kw in text_lower:
+            elif any(kw.lower() in aspect.lower() for kw in decomposition.semantic_keywords):
                 score += 1.5
 
-        for aspect in item.aspects:
-            if any(kw in aspect.lower() for kw in all_keywords):
-                score += 2.0
-        if any(kw in item.service_vertical.value.lower() for kw in all_keywords):
+        # Service vertical matching
+        if item.service_vertical.value in decomposition.target_verticals:
+            score += 2.5
+
+        # Temporal / Cohort horizon matching (e.g. 90-day retention, repeat booking)
+        if decomposition.time_horizon:
+            if "90" in decomposition.time_horizon or "month" in decomposition.time_horizon:
+                if any(w in text_lower for w in ["90", "month", "months", "repeat", "subsequent", "after", "again", "direct", "whatsapp", "cash"]):
+                    score += 3.5
+            elif "same_day" in decomposition.time_horizon:
+                if any(w in text_lower for w in ["same day", "late", "delay", "cancel", "slot", "urgent"]):
+                    score += 3.5
+
+        # Churn intent correlation
+        if item.churn_intent_flag and decomposition.core_topic in ["churn_and_defection", "retention_and_repeat_behavior", "support_and_refunds", "pricing_transparency"]:
             score += 2.0
 
-        if any(w in raw_query.lower() for w in ["not satisfied", "dissatisfied", "complain", "bad", "worst", "unhappy"]):
+        # Sentiment alignment
+        if any(w in raw_query.lower() for w in ["not satisfied", "dissatisfied", "complain", "bad", "worst", "unhappy", "scam"]):
             if (item.rating is not None and item.rating <= 2.0) or item.churn_intent_flag:
                 score += 2.0
 
         return score
 
-    def _build_insufficient_data_response(self, query: str, live_result: Dict[str, Any], total_corpus: int) -> Dict[str, Any]:
+    def _build_insufficient_data_response(
+        self,
+        query: str,
+        live_result: Dict[str, Any],
+        total_corpus: int,
+        decomposition: QueryDecomposition
+    ) -> Dict[str, Any]:
         takeaway = (
             f"Our discovery engine did not find sufficient customer conversations directly addressing '{query}' "
+            f"(Interpreted intent: \"{decomposition.interpreted_intent}\") "
             f"across our ingested corpus ({total_corpus} public records) and live Reddit/Play Store internet scans. "
             "Rather than generating speculative assumptions, the system flags this as an unverified topic in public channels. "
             "This typically occurs when a service category has low complaint volume or discussions occur primarily within private support tickets."
         )
         return {
             "query": query,
+            "interpreted_intent": decomposition.interpreted_intent,
+            "decomposition": decomposition.model_dump(),
             "status": "insufficient_data",
             "title": f"Limited Public Feedback Found for: \"{query}\"",
             "answer": takeaway,
@@ -120,7 +146,8 @@ class CopilotService:
         self,
         query: str,
         matched_items: List[FeedbackItem],
-        live_result: Dict[str, Any]
+        live_result: Dict[str, Any],
+        decomposition: QueryDecomposition
     ) -> Dict[str, Any]:
         ratings = [item.rating for item in matched_items if item.rating is not None]
         avg_rating = round(sum(ratings) / len(ratings), 1) if ratings else 2.5
@@ -130,7 +157,7 @@ class CopilotService:
         verticals = list({item.service_vertical.value for item in matched_items})
         aspects_matched = list({a for item in matched_items for a in item.aspects})
 
-        title = f"Customer Feedback Discovery: \"{query}\""
+        title = f"Behavioral Discovery: {decomposition.interpreted_intent}"
 
         # Build contextual findings with FULL content for maximizing
         findings = []
@@ -233,6 +260,10 @@ class CopilotService:
 
         return {
             "query": query,
+            "interpreted_intent": decomposition.interpreted_intent,
+            "decomposition": decomposition.model_dump(),
+            "core_topic": decomposition.core_topic,
+            "time_horizon": decomposition.time_horizon,
             "status": "success",
             "title": title,
             "answer": executive_takeaway,

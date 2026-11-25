@@ -59,6 +59,54 @@ In strict accordance with compliance and security standards, **no logged-in cust
 
 ### 4. End-to-End System Architecture
 
+The engine operates as a cohesive, five-stage intelligence pipeline:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│ 1. SEMANTIC QUERY UNDERSTANDING & DECOMPOSITION (Adaptive Intent Resolution)                │
+│    • Ingests natural, colloquial, or vague user questions                                   │
+│    • Deconstructs intent into core business vectors (Retention, Pricing, Conduct, Quality) │
+│    • Derives realistic human search queries for live public web scrapers                   │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 2. PERMITTED MULTI-SOURCE INGESTION (Live Web + Stored Ground Truth Corpus)                 │
+│    • Reddit Search API (Global + Metro Subreddits: r/india, r/bangalore, r/delhi)           │
+│    • Google Play Store & Apple App Store RSS feeds                                          │
+│    • Public National Consumer Helpline & Consumer Dispute Boards                            │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 3. INTELLIGENCE, PII REDACTION & VERNACULAR NORMALIZATION                                   │
+│    • PII Sanitization (Phone numbers, emails, technician names)                             │
+│    • Hinglish Code-Mixed Normalization (Hinglish → Standardized English)                     │
+│    • Aspect-Based Sentiment Analysis & Churn Intent Classification                          │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 4. CAUSAL TRIALS & EMPIRICAL METRIC QUANTIFICATION                                          │
+│    • Causal Extraction: [Operational Friction] → [Customer Response] → [Business Drag]      │
+│    • Mathematical Quantification (Reach R_i, NPS Drag S_i, Churn Elasticity C_i, ARR L_i)   │
+│    • Golden Truth vs. AI Tagged Evidence Classification                                     │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│ 5. PURE WHITE MINIMALIST PRESENTATION & SPREADSHEET EXPORT                                  │
+│    • Clean, distraction-free UI with interpreted intent badges                              │
+│    • Clickable maximizable cards showing unabridged verbatim feedback                       │
+│    • UTF-8 BOM CSV export for Microsoft Excel, Google Sheets, and Apple Mac Numbers         │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 5. Generalized Semantic Query Understanding & Intelligent Decomposition
+
+A critical requirement of the engine is that **users must not be required to know technical database schema names or specific keywords**. Users can enter questions in everyday, informal English—ranging from specific multi-month cohort inquiries to vague complaints.
+
+#### Intent Understanding Framework:
+When any natural language query is submitted, the system executes an intelligent decomposition before initiating searches:
+1. **Business Intent Extraction**: Maps the user's inquiry to core marketplace mechanics (e.g., *Disintermediation/Offline Defection*, *Diagnostic Integrity*, *Subscription Fatigue*, *Unfair Rescheduling Fines*, *Hygiene Standards*).
+2. **Temporal & Cohort Horizon Resolution**: Translates time phrases (*"within 90days"*, *"after a week"*, *"during Diwali"*, *"first time booking"*) into explicit retention or seasonal cohort filters without getting broken by numbers or colloquial punctuation.
+3. **Web Search Vector Generation**: Instead of searching literal conversational words (*"what are customers doing"*), the engine synthesizes 2 to 3 **realistic human search vectors** that match how real consumers actually complain or discuss the brand on social channels (e.g., *"Urban Company technician ask for cash directly"*, *"Urban company repeat service booking dropoff"*).
+4. **Dual-Mode Architecture**: Powered by zero-shot LLM reasoning when API credentials are live, with a deterministic, high-coverage domain taxonomy fallback that guarantees zero downtime and zero latency degradation.
+
+---
+
+### 6. Core Business Metrics Framework
+
 ```mermaid
 flowchart TD
     subgraph S1 ["1. Permitted Public Ingestion"]

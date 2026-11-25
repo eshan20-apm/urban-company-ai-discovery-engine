@@ -113,9 +113,16 @@
             <!-- Result Header & Tagged Sources Summary -->
             <div class="border-b border-borderSubtle pb-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
-                    <span id="result-badge" class="text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
-                        Behavioral Analysis
-                    </span>
+                    <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                        <span id="result-badge" class="text-[10px] px-2 py-0.5 rounded font-mono font-bold uppercase tracking-wider bg-slate-100 text-slate-800 border border-slate-200">
+                            Behavioral Analysis
+                        </span>
+                        <div id="intent-chip-container" class="hidden flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-medium tracking-wide">
+                            <i data-lucide="compass" class="w-3 h-3 text-emerald-400"></i>
+                            <span class="text-slate-300">Interpreted Intent:</span>
+                            <span id="interpreted-intent-text" class="text-white font-semibold">Intent Name</span>
+                        </div>
+                    </div>
                     <h2 id="result-title" class="text-lg font-bold text-slateTextPrimary mt-1.5">
                         Query Results
                     </h2>
@@ -336,6 +343,14 @@
 
                 document.getElementById('result-title').textContent = data.title || `Insights: "${query}"`;
                 document.getElementById('result-meta-text').textContent = data.live_ingestion_summary || "Live internet scan completed";
+
+                const intentChip = document.getElementById('intent-chip-container');
+                if (data.interpreted_intent) {
+                    document.getElementById('interpreted-intent-text').textContent = data.interpreted_intent;
+                    intentChip.classList.remove('hidden');
+                } else {
+                    intentChip.classList.add('hidden');
+                }
 
                 if (data.status === "insufficient_data") {
                     document.getElementById('result-badge').textContent = "DATA GAP";

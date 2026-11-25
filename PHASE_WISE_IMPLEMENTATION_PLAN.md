@@ -209,6 +209,21 @@ gantt
 
 ---
 
+### Phase 7: Semantic Query Understanding, Decomposition & Adaptive Live Ingestion
+**Objective**: Enable users to input queries in natural, conversational, or vague English. The system interprets the underlying business intent and breaks the query into realistic search vectors before triggering live ingestion and database retrieval.
+
+#### Deliverables & Tasks:
+1. **Intelligent Query Decomposer Module** (`backend/app/intelligence/query_decomposer.py`):
+   - Semantic intent extraction, temporal horizon resolution (e.g. 90-day retention, same-day cancellations), aspect mapping, and generation of 2-3 realistic human search vectors.
+   - Dual-mode execution: LLM zero-shot analysis with high-coverage domain taxonomy fallback.
+2. **Adaptive Live Ingestion Pipeline**:
+   - Live scrapers query public Reddit search and Google Play Store reviews using synthesized human search vectors instead of raw conversational stop-words.
+3. **Intent-Grounded Retrieval & Synthesis**:
+   - Database retrieval ranks items based on inferred business intent, operational aspects, and semantic keywords.
+   - UI surfaces an "Interpreted Intent" badge so users clearly understand how their query was mapped.
+
+---
+
 ### Summary Checklist Across Phases
 
 | Phase | Core Deliverable | Primary Tech | Verification Criteria |
@@ -220,4 +235,6 @@ gantt
 | **Phase 4** | What-If Simulator & FastAPI Layer | FastAPI, Pydantic v2, Python math | Sub-100ms API responses, all tests pass |
 | **Phase 5** | Minimalist White Next.js Dashboard | Next.js 14, Tailwind CSS, Lucide, Recharts | Interactive 2x2 matrix, sliders & RAG drawer |
 | **Phase 6** | Validation & Executive Case Studies | Pytest, Evaluation harness, Markdown reports | End-to-end operational verification |
+| **Phase 7** | Semantic Query Decomposer & Live Ingestion | NLP, Gemini LLM, Regex Taxonomy, FastAPI | Vague/conversational queries correctly mapped |
+
 

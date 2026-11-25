@@ -65,6 +65,7 @@ class ExportService:
 
         writer.writerow([
             "Search Query",
+            "Interpreted Intent",
             "Analysis Title",
             "Executive Behavioral Takeaway",
             "Item Type",
@@ -78,10 +79,13 @@ class ExportService:
             "Original Source URL"
         ])
 
+        interpreted_intent = data.get("interpreted_intent", query)
+
         # Write Findings
         for f in data.get("key_findings", []):
             writer.writerow([
                 query,
+                interpreted_intent,
                 data.get("title", ""),
                 data.get("executive_takeaway", ""),
                 "Behavioral Pattern",
@@ -99,6 +103,7 @@ class ExportService:
         for c in data.get("citations", []):
             writer.writerow([
                 query,
+                interpreted_intent,
                 data.get("title", ""),
                 data.get("executive_takeaway", ""),
                 "Verbatim Customer Review",

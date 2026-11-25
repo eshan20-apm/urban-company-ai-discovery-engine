@@ -1,7 +1,7 @@
 import re
 import urllib.parse
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import httpx
 from google_play_scraper import reviews, Sort
 
@@ -11,6 +11,7 @@ from backend.app.scrapers.base import generate_hash_id
 from backend.app.intelligence.pii_redactor import pii_redactor
 from backend.app.intelligence.hinglish_engine import hinglish_engine
 from backend.app.intelligence.aspect_classifier import aspect_classifier
+from backend.app.intelligence.query_decomposer import query_decomposer, QueryDecomposition
 from backend.app.db.database import db
 
 STOP_WORDS = {
@@ -37,26 +38,30 @@ class LiveIngestor:
     def __init__(self):
         self.headers = {"User-Agent": "UrbanCompanyResearchBot/2.1 (Live Public Feedback Engine; Academic Research)"}
 
-    def ingest_live(self, query: str) -> Dict[str, Any]:
-        keywords = extract_search_keywords(query)
-        search_term = " ".join(keywords) if keywords else query.strip()
+    def ingest_live(self, query: str, decomposition: Optional[QueryDecomposition] = None) -> Dict[str, Any]:
+        if decomposition is None:
+            decomposition = query_decomposer.decompose_query(query)
+
+        primary_vector = decomposition.search_vectors[0] if decomposition.search_vectors else query.strip()
+        secondary_vector = decomposition.search_vectors[1] if len(decomposition.search_vectors) > 1 else primary_vector
+
         new_items: List[FeedbackItem] = []
         sources_contacted = []
 
-        # 1. Global Reddit Search over the internet
-        reddit_global = self._search_reddit_global(search_term)
+        # 1. Global Reddit Search over the internet using primary search vector
+        reddit_global = self._search_reddit_global(primary_vector)
         if reddit_global:
             new_items.extend(reddit_global)
             sources_contacted.append("Reddit (Global Search)")
 
-        # 2. Targeted Indian Metro Subreddits
-        reddit_metro = self._search_reddit_subreddits(search_term)
+        # 2. Targeted Indian Metro Subreddits using secondary/targeted vector
+        reddit_metro = self._search_reddit_subreddits(secondary_vector)
         if reddit_metro:
             new_items.extend(reddit_metro)
             sources_contacted.append("Reddit (r/india, r/bangalore, r/delhi)")
 
-        # 3. Google Play Store Live Search
-        play_items = self._search_play_store_live(search_term)
+        # 3. Google Play Store Live Search using semantic keywords
+        play_items = self._search_play_store_live(primary_vector, decomposition.semantic_keywords)
         if play_items:
             new_items.extend(play_items)
             sources_contacted.append("Google Play Store")
@@ -69,7 +74,10 @@ class LiveIngestor:
 
         return {
             "query": query,
-            "search_keywords": keywords,
+            "interpreted_intent": decomposition.interpreted_intent,
+            "search_vectors": decomposition.search_vectors,
+            "search_keywords": decomposition.semantic_keywords,
+            "decomposition": decomposition.model_dump(),
             "fetched_count": len(new_items),
             "newly_inserted_count": inserted_count,
             "sources": sources_contacted if sources_contacted else ["Reddit", "Google Play Store"]
@@ -77,7 +85,12 @@ class LiveIngestor:
 
     def _search_reddit_global(self, search_term: str) -> List[FeedbackItem]:
         items: List[FeedbackItem] = []
-        encoded = urllib.parse.quote(f"Urban Company {search_term}")
+        term_clean = search_term.strip()
+        if not term_clean.lower().startswith("urban company") and not term_clean.lower().startswith("urbancompany"):
+            query_str = f"Urban Company {term_clean}"
+        else:
+            query_str = term_clean
+        encoded = urllib.parse.quote(query_str)
         url = f"https://www.reddit.com/search.json?q={encoded}&sort=relevance&limit=6"
 
         try:
@@ -118,7 +131,12 @@ class LiveIngestor:
 
     def _search_reddit_subreddits(self, search_term: str) -> List[FeedbackItem]:
         items: List[FeedbackItem] = []
-        encoded = urllib.parse.quote(f"Urban Company {search_term}")
+        term_clean = search_term.strip()
+        if not term_clean.lower().startswith("urban company") and not term_clean.lower().startswith("urbancompany"):
+            query_str = f"Urban Company {term_clean}"
+        else:
+            query_str = term_clean
+        encoded = urllib.parse.quote(query_str)
         subreddits = ["bangalore", "delhi", "mumbai", "india"]
 
         for sub in subreddits:
@@ -158,7 +176,7 @@ class LiveIngestor:
 
         return items
 
-    def _search_play_store_live(self, search_term: str) -> List[FeedbackItem]:
+    def _search_play_store_live(self, search_term: str, semantic_keywords: Optional[List[str]] = None) -> List[FeedbackItem]:
         items: List[FeedbackItem] = []
         try:
             result, _ = reviews(
@@ -168,12 +186,14 @@ class LiveIngestor:
                 sort=Sort.MOST_RELEVANT,
                 count=40,
             )
-            tokens = search_term.lower().split()
+            tokens = [k.lower() for k in (semantic_keywords or []) if len(k) > 2]
+            if not tokens:
+                tokens = [t for t in search_term.lower().split() if len(t) > 3]
 
             for r in result:
                 content = r.get("content", "").strip()
                 content_lower = content.lower()
-                if any(t in content_lower for t in tokens if len(t) > 3):
+                if any(t in content_lower for t in tokens):
                     rating = float(r.get("score", 3.0))
                     item_id = generate_hash_id("play_store_live", f"{r.get('reviewId', '')}_{content}")
                     items.append(FeedbackItem(

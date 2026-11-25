@@ -83,7 +83,9 @@ def test_discovery_search_endpoints():
     resp1 = client.get("/api/v1/discovery/search?q=What%20do%20customers%20expect%20once%20a%20booking%20is%20complete?")
     assert resp1.status_code == 200
     data1 = resp1.json()
-    assert "Feedback Discovery" in data1["title"]
+    assert "Discovery" in data1["title"]
+    assert "interpreted_intent" in data1
+    assert "decomposition" in data1
     assert "key_findings" in data1
     assert "business_metric_impact" in data1
     assert len(data1["key_findings"]) > 0
@@ -97,9 +99,18 @@ def test_discovery_search_endpoints():
     resp2 = client.get("/api/v1/discovery/search?q=How%20do%20they%20decide%20that%20a%20home%20service%20is%20needed,%20and%20when?")
     assert resp2.status_code == 200
     data2 = resp2.json()
-    assert "Feedback Discovery" in data2["title"]
+    assert "Discovery" in data2["title"]
     assert "key_findings" in data2
     assert "business_metric_impact" in data2
+
+    # Test example 3: Natural conversational query with 90-days cohort retention
+    resp3 = client.get("/api/v1/discovery/search?q=what%20urban%20company%20customers%20are%20doing%20within%2090days%20after%20the%20last%20booking?")
+    assert resp3.status_code == 200
+    data3 = resp3.json()
+    assert "interpreted_intent" in data3
+    assert "90-Day" in data3["interpreted_intent"] or "Retention" in data3["interpreted_intent"]
+    assert "decomposition" in data3
+    assert data3["decomposition"]["time_horizon"] == "90_day"
 
 def test_export_csv_endpoints():
     # 1. Export all feedback items
@@ -118,7 +129,7 @@ def test_export_csv_endpoints():
     assert "text/csv" in resp_search.headers["content-type"]
     assert resp_search.content.startswith(b"\xef\xbb\xbf")  # UTF-8 BOM verification
     search_csv_text = resp_search.content.decode("utf-8-sig")
-    assert "Search Query,Analysis Title,Executive Behavioral Takeaway,Item Type,Data Tag" in search_csv_text
+    assert "Search Query,Interpreted Intent,Analysis Title,Executive Behavioral Takeaway,Item Type,Data Tag" in search_csv_text
     assert "booking" in search_csv_text
     assert ("Golden Truth" in search_csv_text or "AI Tagged" in search_csv_text)
 
