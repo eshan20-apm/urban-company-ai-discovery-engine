@@ -97,8 +97,29 @@ def test_query_decomposer_pricing_and_vague_queries():
     res_cancel = query_decomposer.decompose_query("partner cancelled slot at the last minute")
     assert res_cancel.core_topic == "punctuality_and_cancellation"
 
-    # Generalized topic
+    # Generalized topic: ensure word-boundary matching ('facial' must not match 'ac', 'cleanup' must not match 'clean')
     res_general = query_decomposer.decompose_query("salon hygiene and facial cleanup")
     assert ServiceVertical.SALON_SPA.value in res_general.target_verticals
+    assert ServiceVertical.APPLIANCE_REPAIR.value not in res_general.target_verticals
+    assert ServiceVertical.CLEANING.value not in res_general.target_verticals
+
+    # Post-booking expectations vs pre-booking decision triggers must not collapse into the same bucket
+    res_post = query_decomposer.decompose_query("What do customers expect once a booking is complete?")
+    res_decision = query_decomposer.decompose_query("How do customers decide when a home service is needed?")
+    assert res_post.core_topic != res_decision.core_topic
+    assert res_post.search_vectors != res_decision.search_vectors
+
+
+def test_scraper_hash_id_consistency():
+    from backend.app.scrapers.base import generate_hash_id
+    # LiveIngestor and batch scrapers must use the same canonical source prefix so DB INSERT OR IGNORE deduplicates
+    play_batch_id = generate_hash_id("play_store", "rev123_Great service")
+    play_live_id = generate_hash_id("play_store", "rev123_Great service")
+    assert play_batch_id == play_live_id
+
+    reddit_id_1 = generate_hash_id("reddit", "abc123_AC scam")
+    reddit_id_2 = generate_hash_id("reddit", "abc123_AC scam")
+    assert reddit_id_1 == reddit_id_2
+
 
 

@@ -38,7 +38,8 @@ class RedditScraper:
                                 continue
 
                             permalink = post.get("permalink", "")
-                            item_id = generate_hash_id("reddit", f"{sub}_{post.get('id', '')}_{title}")
+                            post_uid = post.get("id") or permalink or title
+                            item_id = generate_hash_id("reddit", f"{post_uid}_{title}")
                             upvotes = post.get("ups", 1)
                             
                             items.append(FeedbackItem(

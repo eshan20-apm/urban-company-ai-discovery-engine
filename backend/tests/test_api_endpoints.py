@@ -121,6 +121,22 @@ def test_discovery_search_endpoints():
     assert "Repeat Booking" in data4["interpreted_intent"]
     assert data4["decomposition"]["time_horizon"] is None
 
+    # Test example 5: Distinct queries return distinct citations (no rotation of identical top items)
+    resp_ac = client.get("/api/v1/discovery/search?q=AC%20gas%20leak%20overcharging")
+    resp_salon = client.get("/api/v1/discovery/search?q=Salon%20hygiene%20and%20cleanup")
+    assert resp_ac.status_code == 200 and resp_salon.status_code == 200
+    ac_texts = {c["full_text"] for c in resp_ac.json()["citations"]}
+    salon_texts = {c["full_text"] for c in resp_salon.json()["citations"]}
+    assert len(ac_texts) >= 2 and len(salon_texts) >= 2
+    assert ac_texts != salon_texts
+    # Citations within a response must be unique (no duplicate verbatim texts)
+    ac_list = [c["full_text"] for c in resp_ac.json()["citations"]]
+    assert len(ac_list) == len(set(ac_list))
+    # Key findings should be aggregated patterns, not verbatim duplicates of citations
+    ac_finding_titles = [f["title"] for f in resp_ac.json()["key_findings"]]
+    assert len(ac_finding_titles) > 0
+    assert any("mention" in t for t in ac_finding_titles)
+
 def test_export_csv_endpoints():
     # 1. Export all feedback items
     resp_all = client.get("/api/v1/export/csv")

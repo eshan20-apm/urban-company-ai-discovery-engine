@@ -55,17 +55,17 @@ class QueryDecomposer:
         elif any(f in query_lower for f in ["diwali", "festive", "festival", "summer", "monsoon"]):
             time_horizon = "seasonal_peak"
 
-        # B. Service Vertical Detection
+        # B. Service Vertical Detection (word-boundary matched so e.g. 'facial' doesn't match 'ac')
         verticals = []
-        if any(w in query_lower for w in ["ac", "air conditioner", "fridge", "refrigerator", "washing machine", "ro", "water purifier", "geyser", "microwave"]):
+        if re.search(r'\b(?:ac|air\s*conditioner|fridge|refrigerator|washing\s*machine|ro|water\s*purifier|geyser|microwave)\b', query_lower):
             verticals.append(ServiceVertical.APPLIANCE_REPAIR.value)
-        if any(w in query_lower for w in ["clean", "cleaning", "deep clean", "bathroom", "sofa", "kitchen"]):
+        if re.search(r'\b(?:clean|cleaning|deep\s*clean|bathroom|sofa|kitchen)\b', query_lower):
             verticals.append(ServiceVertical.CLEANING.value)
-        if any(w in query_lower for w in ["salon", "spa", "facial", "wax", "waxing", "haircut", "makeup", "massage", "pedicure"]):
+        if re.search(r'\b(?:salon|spa|facial|wax|waxing|haircut|makeup|massage|pedicure|hygiene)\b', query_lower):
             verticals.append(ServiceVertical.SALON_SPA.value)
-        if any(w in query_lower for w in ["plumber", "plumbing", "pipe", "tap", "electrician", "wire", "carpenter", "drill"]):
+        if re.search(r'\b(?:plumber|plumbing|pipe|tap|electrician|wire|wiring|carpenter|drill)\b', query_lower):
             verticals.append(ServiceVertical.PLUMBING_CARPENTRY.value)
-        if any(w in query_lower for w in ["paint", "painting", "waterproofing", "dampness"]):
+        if re.search(r'\b(?:paint|painting|waterproofing|dampness)\b', query_lower):
             verticals.append(ServiceVertical.PAINTING.value)
         if not verticals:
             verticals.append(ServiceVertical.GENERAL.value)
@@ -81,17 +81,17 @@ class QueryDecomposer:
                 "Urban company technician deal outside app",
                 "Urban company offline service booking"
             ]
-            semantic_keywords = ["whatsapp", "cash", "offline", "direct", "technician", "outside", "app", "phone", "number"]
+            semantic_keywords = ["whatsapp", "cash", "offline", "direct", "outside", "phone", "number", "local"]
             is_vague = False
 
         # 2. Retention, Cohort Windows, Repeat Booking & Post-Booking Behavior
-        elif any(p in query_lower for p in ["repeat", "retention", "rebook", "next booking", "subsequent", "after booking", "after the last booking", "what customers are doing", "cohort", "come back"]):
+        elif any(p in query_lower for p in ["repeat", "retention", "rebook", "next booking", "subsequent", "after the last booking", "what customers are doing", "what urban company customers are doing", "cohort", "come back"]):
             if time_horizon:
                 qty_unit = time_horizon.replace('_', '-').upper() if 'day' in time_horizon else time_horizon.replace('_', ' ').title()
                 interpreted_intent = f"{qty_unit} Customer Retention & Repeat Booking Dynamics"
                 search_vectors = [
                     f"Urban company repeat booking {time_horizon.replace('_', ' ')}",
-                    f"Urban company customer retention repeat service dropoff",
+                    "Urban company customer retention repeat service dropoff",
                     f"Urban company rebook after {time_horizon.replace('_', ' ')}"
                 ]
             else:
@@ -103,11 +103,11 @@ class QueryDecomposer:
                 ]
             core_topic = "retention_and_repeat_behavior"
             target_aspects = ["Pricing & Transparency", "App UX & UC Plus", "Customer Support & Refunds"]
-            semantic_keywords = ["repeat", "retention", "booking", "again", "subsequent", "frequency", "dropoff", "rebook", "customer"]
+            semantic_keywords = ["repeat", "retention", "subsequent", "frequency", "dropoff", "rebook", "subscription", "renew", "renewal", "regular", "again"]
             is_vague = False
 
-        # 2. Explicit Churn / Defection / Stopping usage
-        elif any(p in query_lower for p in ["stop using", "stopped using", "leave", "leaving", "uninstall", "delete app", "switch to local", "never book again"]):
+        # 3. Explicit Churn / Defection / Stopping usage / Switching to local technicians
+        elif any(p in query_lower for p in ["stop using", "stopped using", "leave", "leaving", "uninstall", "delete app", "delete the app", "switch to local", "never book again", "defect", "defection", "local offline", "local technician", "local vendor"]):
             interpreted_intent = "Customer Churn Triggers, Platform Defection & Local Technician Switch"
             core_topic = "churn_and_defection"
             target_aspects = ["Pricing & Transparency", "Customer Support & Refunds", "Service Quality"]
@@ -116,11 +116,11 @@ class QueryDecomposer:
                 "Urban company switching to local offline vendors",
                 "Urban company unfair charges customer care no help"
             ]
-            semantic_keywords = ["uninstall", "delete", "worst", "never", "again", "switch", "local", "scam", "charges", "churn", "stop"]
+            semantic_keywords = ["uninstall", "delete", "switch", "local", "vendor", "offline", "scam", "churn", "stop", "never again"]
             is_vague = True if len(raw_query.split()) < 6 else False
 
-        # 3. Doorstep Pricing & Cash/Overcharging
-        elif any(p in query_lower for p in ["extra money", "taking extra", "overcharging", "hidden charge", "rate card", "asking cash", "cash payment", "bill mismatch"]):
+        # 4. Doorstep Pricing & Cash/Overcharging
+        elif any(p in query_lower for p in ["extra money", "taking extra", "overcharging", "overcharge", "hidden charge", "rate card", "asking cash", "cash payment", "bill mismatch"]):
             interpreted_intent = "Doorstep Pricing Transparency, Cash Surcharges & Spare Parts Disputes"
             core_topic = "pricing_transparency"
             target_aspects = ["Pricing & Transparency", "Partner Conduct & Safety"]
@@ -129,10 +129,10 @@ class QueryDecomposer:
                 "Urban company spare parts rate card bill overcharge",
                 "Urban company visiting charge without parts"
             ]
-            semantic_keywords = ["extra", "money", "cash", "charge", "overcharge", "parts", "bill", "hidden", "doorstep", "expensive"]
+            semantic_keywords = ["extra", "cash", "overcharge", "overcharging", "parts", "bill", "hidden", "doorstep", "expensive", "inspection", "visitation"]
             is_vague = False
 
-        # 4. Delays, Cancellations, No-shows
+        # 5. Delays, Cancellations, No-shows
         elif any(p in query_lower for p in ["cancel", "cancelled", "delay", "reschedule", "didn't show", "not turn up", "late", "punctual"]):
             interpreted_intent = "Doorstep Arrival Reliability, Partner No-Shows & Cancellation Frictions"
             core_topic = "punctuality_and_cancellation"
@@ -142,10 +142,10 @@ class QueryDecomposer:
                 "Urban company appointment rescheduled delay emergency",
                 "Urban company missed call policy cancellation fine"
             ]
-            semantic_keywords = ["cancel", "cancelled", "delay", "reschedule", "waiting", "turn up", "arrive", "slot", "fine", "show"]
+            semantic_keywords = ["cancel", "cancelled", "cancellation", "delay", "delayed", "reschedule", "rescheduled", "waiting", "turn up", "arrive", "late", "slot", "fine"]
             is_vague = False
 
-        # 5. Service Quality / Poor workmanship / Broken item
+        # 6. Service Quality / Poor workmanship / Broken item
         elif any(p in query_lower for p in ["gas leak", "gas charging", "cooling issue", "compressor", "foam jet", "diagnostic", "poor work", "shoddy", "damaged", "broken", "not working after", "failed repair"]):
             interpreted_intent = "Appliance & Service Diagnostic Integrity, Workmanship & Repair Failure Risks"
             core_topic = "service_quality_and_damages"
@@ -155,23 +155,36 @@ class QueryDecomposer:
                 "Urban company repair failed not working damage",
                 "Urban company technician broke laptop appliance"
             ]
-            semantic_keywords = ["quality", "damaged", "broken", "failed", "gas", "leak", "cooling", "rework", "warranty", "shoddy"]
+            semantic_keywords = ["quality", "damaged", "damage", "broken", "failed", "gas", "leak", "cooling", "rework", "warranty", "shoddy", "compressor"]
             is_vague = False
 
-        # 6. Customer Decision Triggers / When service needed
-        elif any(p in query_lower for p in ["decide", "decision", "when is needed", "trigger", "why do they call", "booking is complete", "expect once"]):
-            interpreted_intent = "Customer Need Triggers, Pre-Booking Expectations & Trust Drivers"
-            core_topic = "customer_decision_triggers"
-            target_aspects = ["Service Quality", "Pricing & Transparency", "App UX & UC Plus"]
+        # 7a. Post-Booking Expectations (Distinct from Pre-Booking Decision Triggers)
+        elif any(p in query_lower for p in ["booking is complete", "expect once", "after booking", "confirmation", "post booking", "post-booking"]):
+            interpreted_intent = "Post-Booking Customer Expectations, Arrival Assurance & Price Clarity"
+            core_topic = "post_booking_expectations"
+            target_aspects = ["Punctuality & Reliability", "Pricing & Transparency", "App UX & UC Plus"]
             search_vectors = [
                 "Urban company expectations once booking complete confirmation",
-                "Urban company how customers decide book home service",
-                "Urban company routine cleaning festival emergency"
+                "Urban company assigned professional did not arrive after booking",
+                "Urban company hidden charges after booking confirmation"
             ]
-            semantic_keywords = ["decide", "need", "booking", "expect", "confirmation", "service", "trust", "routine", "emergency"]
+            semantic_keywords = ["confirm", "confirmed", "confirmation", "assigned", "slot", "arrive", "arrived", "show up", "turn up", "estimate", "included", "punctual", "reschedule"]
             is_vague = False
 
-        # 7. Customer Support, Refunds & Disputes
+        # 7b. Customer Decision Triggers / When service needed
+        elif any(p in query_lower for p in ["decide", "decision", "when is needed", "is needed", "trigger", "why do they call", "when a home service"]):
+            interpreted_intent = "Customer Need Triggers, Urgency Drivers & Service Selection Factors"
+            core_topic = "customer_decision_triggers"
+            target_aspects = ["Service Quality", "App UX & UC Plus"]
+            search_vectors = [
+                "Urban company how customers decide book home service",
+                "Urban company routine cleaning festival emergency instant",
+                "Urban company why book vs local technician"
+            ]
+            semantic_keywords = ["routine", "emergency", "festival", "diwali", "summer", "monsoon", "instant", "urgent", "maintenance", "convenient", "worth", "trusted", "hygiene"]
+            is_vague = False
+
+        # 8. Customer Support, Refunds & Disputes
         elif any(p in query_lower for p in ["refund", "customer care", "helpdesk", "bot", "ticket", "dispute", "not satisfied with the serv"]):
             interpreted_intent = "Customer Support Bottlenecks, Automated Bot Frustration & Refund Delays"
             core_topic = "support_and_refunds"
@@ -181,12 +194,12 @@ class QueryDecomposer:
                 "Urban company chatbot loop support ticket closed without help",
                 "Urban company consumer court dispute escalation"
             ]
-            semantic_keywords = ["refund", "support", "help", "bot", "ticket", "escalation", "dissatisfied", "complain", "care"]
+            semantic_keywords = ["refund", "refunded", "support", "helpdesk", "bot", "chatbot", "ticket", "escalation", "dissatisfied", "complain", "complaint", "care", "dispute", "resolution"]
             is_vague = False
 
-        # 8. Generalized Fallback for any other natural query
+        # 9. Generalized Fallback for any other natural query
         else:
-            clean_tokens = [w for w in re.findall(r'\b[a-zA-Z0-9]{3,}\b', query_lower) if w not in {"what", "how", "why", "when", "does", "the", "and", "for", "with", "urban", "company"}]
+            clean_tokens = [w for w in re.findall(r'\b[a-zA-Z0-9]{3,}\b', query_lower) if w not in {"what", "how", "why", "when", "where", "which", "does", "did", "are", "the", "and", "for", "with", "urban", "company", "customer", "customers", "service", "services"}]
             topic_str = " ".join(clean_tokens[:3]).title() if clean_tokens else "Service Experience"
             interpreted_intent = f"Customer Perceptions & Feedback Analysis: {topic_str}"
             core_topic = "general_exploration"
@@ -195,7 +208,7 @@ class QueryDecomposer:
                 f"Urban company {' '.join(clean_tokens[:3])}",
                 f"Urban company customer reviews {' '.join(clean_tokens[:2])}"
             ]
-            semantic_keywords = clean_tokens if clean_tokens else ["urban", "company", "service"]
+            semantic_keywords = clean_tokens if clean_tokens else ["quality", "pricing", "experience"]
             is_vague = True if len(clean_tokens) <= 2 else False
 
         return QueryDecomposition(

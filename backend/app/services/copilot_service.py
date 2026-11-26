@@ -1,14 +1,17 @@
+from collections import defaultdict
 import re
 from typing import List, Dict, Any, Tuple, Optional
 from backend.app.db.database import db
-from backend.app.models.schemas import FeedbackItem
+from backend.app.models.schemas import FeedbackItem, ServiceVertical
 from backend.app.scrapers.live_ingestor import live_ingestor, extract_search_keywords
 from backend.app.intelligence.query_decomposer import query_decomposer, QueryDecomposition
 
 GENERIC_WORDS = {
     "booking", "book", "booked", "service", "services", "urban", "company",
     "customer", "customers", "app", "experience", "help", "work", "time",
-    "need", "needed", "decide", "expect", "happen", "happens"
+    "need", "needed", "decide", "expect", "happen", "happens", "people",
+    "using", "use", "used", "once", "complete", "home", "they", "them",
+    "their", "what", "when", "why", "how", "within", "after", "last"
 }
 
 class CopilotService:
@@ -36,19 +39,27 @@ class CopilotService:
 
         for item in all_items:
             score = self._compute_relevance_score(item, decomposition, cleaned_query)
-            if score > 0:
+            if score >= 3.0:
                 scored_items.append((score, item))
 
         scored_items.sort(key=lambda x: -x[0])
-        matched_items = [item for score, item in scored_items if score >= 3.0]
+
+        # Deduplicate matched items by normalized text so identical reviews never rotate twice
+        matched_items: List[FeedbackItem] = []
+        seen_texts = set()
+        for _, item in scored_items:
+            norm_key = re.sub(r'\s+', ' ', item.text_normalized.strip().lower())
+            if norm_key in seen_texts:
+                continue
+            seen_texts.add(norm_key)
+            matched_items.append(item)
 
         # 4. Honest Data Sufficiency Gate
         if len(matched_items) < 2:
             return self._build_insufficient_data_response(cleaned_query, live_result, len(all_items), decomposition)
 
-        # 5. Dynamic Synthesis from Grounded Data (with full unabridged text for maximizing)
-        top_matches = matched_items[:6]
-        return self._synthesize_grounded_analysis(cleaned_query, top_matches, live_result, decomposition)
+        # 5. Dynamic Synthesis from Grounded Data (aggregated patterns + distinct verbatim citations)
+        return self._synthesize_grounded_analysis(cleaned_query, matched_items, live_result, decomposition)
 
     def _compute_relevance_score(
         self,
@@ -58,55 +69,113 @@ class CopilotService:
     ) -> float:
         text_lower = (item.text_normalized + " " + item.text_raw).lower()
         score = 0.0
+        keyword_hits = 0
 
-        # Exact / Substring match for key phrases
+        # Skip ultra-short generic reviews (e.g. "good", "nice")
+        if len(item.text_raw.strip()) < 20:
+            return 0.0
+
+        # 1. Exact / Substring match for meaningful query phrases
         if len(raw_query) > 10 and raw_query.lower() in text_lower:
             score += 10.0
+            keyword_hits += 2
 
-        # Semantic keywords matching
-        matched_kws = 0
+        # 2. Direct query-specific token matching (highest priority so each query ranks differently)
+        all_query_tokens = extract_search_keywords(raw_query)
+        raw_tokens = [w for w in all_query_tokens if w not in GENERIC_WORDS]
+        # If the user's entire query consists only of domain-generic words (e.g. "booking"), keep them
+        if not raw_tokens:
+            raw_tokens = all_query_tokens
+        for tok in raw_tokens:
+            if re.search(rf'\b{re.escape(tok)}\b', text_lower):
+                score += 5.0
+                keyword_hits += 1
+            elif len(tok) >= 5 and tok in text_lower:
+                score += 2.0
+                keyword_hits += 1
+
+        # 3. Semantic keywords matching (excluding generic filler words)
+        seen_kws = set(raw_tokens)
         for kw in decomposition.semantic_keywords:
-            if re.search(rf'\b{re.escape(kw.lower())}\b', text_lower):
-                score += 3.5
-                matched_kws += 1
-            elif kw.lower() in text_lower:
-                score += 1.5
-                matched_kws += 1
-
-        # Target operational aspects matching
-        for aspect in item.aspects:
-            if aspect in decomposition.target_aspects:
+            kl = kw.lower().strip()
+            if not kl or (kl in GENERIC_WORDS and kl not in raw_tokens) or kl in seen_kws:
+                continue
+            seen_kws.add(kl)
+            if re.search(rf'\b{re.escape(kl)}\b', text_lower):
                 score += 3.0
-            elif any(kw.lower() in aspect.lower() for kw in decomposition.semantic_keywords):
-                score += 1.5
+                keyword_hits += 1
+            elif len(kl) >= 5 and kl in text_lower:
+                score += 1.0
+                keyword_hits += 1
 
-        # Service vertical matching
-        if item.service_vertical.value in decomposition.target_verticals:
-            score += 2.5
-
-        # Temporal / Cohort horizon matching
+        # 4. Temporal / Cohort horizon matching (require unit context, not bare digits like '90 minutes')
         if decomposition.time_horizon:
             qty_match = re.search(r'\d+', decomposition.time_horizon)
-            if qty_match and qty_match.group(0) in text_lower:
-                score += 3.5
-            if any(w in text_lower for w in ["month", "months", "repeat", "subsequent", "after", "again"]):
-                score += 2.0
+            if qty_match and re.search(rf'\b{re.escape(qty_match.group(0))}\s*(?:day|days|month|months|week|weeks)\b', text_lower):
+                score += 4.5
+                keyword_hits += 1
+            if any(re.search(rf'\b{w}\b', text_lower) for w in ["month", "months", "repeat", "subsequent", "rebook", "renewal", "subscription"]):
+                score += 2.5
+                keyword_hits += 1
             if "same_day" in decomposition.time_horizon and any(w in text_lower for w in ["same day", "late", "delay", "cancel", "slot", "urgent"]):
                 score += 3.5
+                keyword_hits += 1
         elif decomposition.core_topic == "retention_and_repeat_behavior":
-            if any(w in text_lower for w in ["repeat", "again", "second time", "next time", "rebook", "frequency"]):
+            if any(w in text_lower for w in ["repeat", "second time", "next time", "rebook", "frequency", "subscription", "renew"]):
                 score += 3.0
+                keyword_hits += 1
 
-        # Churn intent correlation
+        # Gate secondary boosts on at least one actual keyword/topic hit so multi-aspect generic reviews
+        # cannot outrank relevant reviews or win unrelated queries on aspect tags alone.
+        if keyword_hits == 0:
+            return 0.0
+
+        # 5. Service vertical alignment (boost specific verticals, penalize mismatched specific verticals)
+        specific_target_verticals = [v for v in decomposition.target_verticals if v != ServiceVertical.GENERAL.value]
+        if specific_target_verticals:
+            if item.service_vertical.value in specific_target_verticals:
+                score += 4.0
+            elif item.service_vertical != ServiceVertical.GENERAL:
+                score -= 2.0
+
+        # 6. Target operational aspects matching (tie-breaker & alignment, capped)
+        aspect_matches = sum(1 for aspect in item.aspects if aspect in decomposition.target_aspects)
+        score += min(aspect_matches * 1.5, 3.0)
+
+        # 7. Churn intent correlation
         if item.churn_intent_flag and decomposition.core_topic in ["churn_and_defection", "retention_and_repeat_behavior", "support_and_refunds", "pricing_transparency"]:
-            score += 2.0
+            score += 1.5
 
-        # Sentiment alignment
+        # 8. Sentiment alignment
         if any(w in raw_query.lower() for w in ["not satisfied", "dissatisfied", "complain", "bad", "worst", "unhappy", "scam"]):
             if (item.rating is not None and item.rating <= 2.0) or item.churn_intent_flag:
-                score += 2.0
+                score += 1.5
 
-        return score
+        return max(score, 0.0)
+
+    @staticmethod
+    def _classify_behavior(item: FeedbackItem) -> str:
+        if item.churn_intent_flag:
+            return "Defection & Churn Trigger"
+        if item.rating is not None and item.rating <= 2.0:
+            return "Negative Reaction & Dispute Escalation"
+        if item.rating is not None and item.rating >= 4.0:
+            return "Delight Driver & Retention"
+        return "Customer Expectation & Evaluation"
+
+    @staticmethod
+    def _format_live_summary(live_result: Dict[str, Any], record_count: int, insufficient: bool = False) -> str:
+        sources = live_result.get("sources") or []
+        sources_failed = live_result.get("sources_failed") or []
+        new_ingested = live_result.get("newly_inserted_count", 0)
+        if sources:
+            if insufficient:
+                return f"Live internet scan completed across {', '.join(sources)}. Searched {record_count} records. Sufficient direct matches not found."
+            return f"⚡ Live Internet Search Active: Queried {', '.join(sources)}. Analyzed {record_count} matching customer records ({new_ingested} new)."
+        failed_note = f" ({', '.join(sources_failed)} unreachable)" if sources_failed else ""
+        if insufficient:
+            return f"Corpus scan searched {record_count} local records (live internet scan unavailable{failed_note})."
+        return f"Corpus Search (Live internet scan unavailable{failed_note}). Analyzed {record_count} matching local records."
 
     def _build_insufficient_data_response(
         self,
@@ -118,7 +187,7 @@ class CopilotService:
         takeaway = (
             f"Our discovery engine did not find sufficient customer conversations directly addressing '{query}' "
             f"(Interpreted intent: \"{decomposition.interpreted_intent}\") "
-            f"across our ingested corpus ({total_corpus} public records) and live Reddit/Play Store internet scans. "
+            f"across our ingested corpus ({total_corpus} public records) and live internet scans. "
             "Rather than generating speculative assumptions, the system flags this as an unverified topic in public channels. "
             "This typically occurs when a service category has low complaint volume or discussions occur primarily within private support tickets."
         )
@@ -137,7 +206,7 @@ class CopilotService:
                 "recommended_action": "Try searching for categories with rich public feedback: AC gas refill pricing, doorstep cancellation delays, salon at home hygiene, or customer support refund escalations."
             },
             "citations": [],
-            "live_ingestion_summary": f"Live internet scan completed across {', '.join(live_result['sources'])}. Searched {total_corpus} records. 0 direct customer complaints found for '{query}'.",
+            "live_ingestion_summary": self._format_live_summary(live_result, total_corpus, insufficient=True),
             "suggested_queries": [
                 "What happens when a customer is not satisfied with the service?",
                 "What do customers expect once a booking is complete?",
@@ -163,38 +232,50 @@ class CopilotService:
 
         title = f"Behavioral Discovery: {decomposition.interpreted_intent}"
 
-        # Build contextual findings with FULL content for maximizing
+        # Group matched items into synthesized behavioral pattern clusters (distinct from individual citations)
+        clusters: Dict[Tuple[str, str], List[FeedbackItem]] = defaultdict(list)
+        for item in matched_items:
+            behavior_type = self._classify_behavior(item)
+            aspect_name = next((a for a in item.aspects if a in decomposition.target_aspects), None)
+            if not aspect_name:
+                aspect_name = item.aspects[0] if item.aspects else "Service Experience"
+            clusters[(behavior_type, aspect_name)].append(item)
+
+        sorted_clusters = sorted(clusters.items(), key=lambda kv: -len(kv[1]))[:4]
         findings = []
-        for i, item in enumerate(matched_items[:4]):
-            source_label = item.source.value.replace("_", " ").title()
-            city_label = item.city or "All India"
-            snippet = item.text_normalized[:140] + ("..." if len(item.text_normalized) > 140 else "")
+        for i, ((behavior_type, aspect_name), group_items) in enumerate(sorted_clusters):
+            group_sources = list(dict.fromkeys(it.source.value.replace("_", " ").title() for it in group_items))
+            group_cities = list(dict.fromkeys(it.city or "All India" for it in group_items))
+            group_verticals = list(dict.fromkeys(it.service_vertical.value for it in group_items))
+            group_ratings = [it.rating for it in group_items if it.rating is not None]
+            avg_group_rating = f"{round(sum(group_ratings) / len(group_ratings), 1)}★" if group_ratings else "Unrated"
+            group_churn = sum(1 for it in group_items if it.churn_intent_flag)
+            lead_item = group_items[0]
 
-            if item.churn_intent_flag:
-                behavior_type = "Defection & Churn Trigger"
-            elif item.rating is not None and item.rating <= 2.0:
-                behavior_type = "Negative Reaction & Dispute Escalation"
-            elif item.rating is not None and item.rating >= 4.0:
-                behavior_type = "Delight Driver & Retention"
-            else:
-                behavior_type = "Customer Expectation & Evaluation"
+            excerpt_lines = [
+                f"• [{it.source.value.replace('_', ' ').title()} | {it.city or 'All India'}]: {it.text_normalized}"
+                for it in group_items[:3]
+            ]
 
-            aspect_name = item.aspects[0] if item.aspects else "Service Experience"
             findings.append({
                 "id": f"pattern-{i+1}",
-                "title": f"{behavior_type}: {aspect_name} ({item.service_vertical.value})",
-                "detail": f"Observed on {source_label} ({city_label}): \"{snippet}\"",
-                "full_explanation": (
-                    f"In this customer interaction, the customer encountered operational friction regarding {aspect_name}. "
-                    f"Their behavioral response was classified as '{behavior_type}'. "
-                    f"Rating given: {item.rating if item.rating else 'Unrated'}★. Location: {city_label}."
+                "title": f"{behavior_type}: {aspect_name} ({len(group_items)} {'mention' if len(group_items) == 1 else 'mentions'})",
+                "detail": (
+                    f"Pattern across {len(group_items)} matching {'record' if len(group_items) == 1 else 'records'} "
+                    f"on {', '.join(group_sources[:2])} covering {', '.join(group_verticals[:2])} "
+                    f"(Avg rating: {avg_group_rating}, churn signals: {group_churn}/{len(group_items)})."
                 ),
-                "source_tag": source_label,
-                "city": city_label,
-                "evidence_quote": item.text_normalized,
-                "raw_text": item.text_raw,
-                "url": item.external_url or "https://urbancompany.com",
-                "author": item.author_masked,
+                "full_explanation": (
+                    f"Aggregated behavioral theme around {aspect_name} classified as '{behavior_type}'. "
+                    f"Observed across {len(group_items)} matching records from {', '.join(group_sources)} "
+                    f"in {', '.join(group_cities[:3])}. Average rating: {avg_group_rating}."
+                ),
+                "source_tag": ", ".join(group_sources[:2]),
+                "city": ", ".join(group_cities[:2]),
+                "evidence_quote": "\n\n".join(excerpt_lines),
+                "raw_text": None,
+                "url": lead_item.external_url or "https://urbancompany.com",
+                "author": f"{len(group_items)} customers",
                 "tag_type": "ai_tagged",
                 "tag_label": "AI Tagged"
             })
@@ -202,7 +283,7 @@ class CopilotService:
         # Synthesize Executive Takeaway
         if churn_pct > 30:
             executive_takeaway = (
-                f"Analysis of {len(matched_items)} highly relevant public discussions indicates severe dissatisfaction around this query. "
+                f"Analysis of {len(matched_items)} relevant public discussions indicates strong dissatisfaction around this query. "
                 f"The average customer rating across matched feedback is **{avg_rating}/5.0**, with **{churn_pct}% of reviews exhibiting explicit churn intent** "
                 f"(threats to uninstall or switch to local offline technicians). Key friction centers on {', '.join(aspects_matched[:2])}."
             )
@@ -264,8 +345,7 @@ class CopilotService:
                 "tag_label": citation_tag_label
             })
 
-        new_ingested = live_result.get("newly_inserted_count", 0)
-        live_summary = f"⚡ Live Internet Search Active: Queried {', '.join(live_result['sources'])}. Analyzed {len(matched_items)} matching customer records ({new_ingested} new)."
+        live_summary = self._format_live_summary(live_result, len(matched_items), insufficient=False)
 
         return {
             "query": query,
